@@ -1,0 +1,145 @@
+<!--pages/schedule/schedule.wxml-->
+<view class="container">
+  <!-- 顶部背景 -->
+  <view class="header-bg">
+    <view class="header-content">
+      <text class="header-title">路线预约</text>
+      <text class="header-subtitle">提前预约，安全出行</text>
+    </view>
+  </view>
+
+  <view class="content-area">
+    <form bindsubmit="submitForm">
+      <!-- 基本信息 -->
+      <view class="form-section">
+        <view class="section-header">
+          <view class="section-icon">👤</view>
+          <text class="section-title">基本信息</text>
+        </view>
+        <view class="form-item">
+          <text class="label">姓名</text>
+          <input class="input" name="name" placeholder="请输入姓名" value="{{formData.name}}"/>
+        </view>
+        <view class="form-item">
+          <text class="label">车牌号</text>
+          <input class="input" name="plateNumber" placeholder="请输入车牌号" value="{{formData.plateNumber}}"/>
+        </view>
+        <view class="form-item">
+          <text class="label">车辆类型</text>
+          <picker class="picker" bindchange="bindCarTypeChange" value="{{carTypeIndex}}" range="{{carTypes}}" range-key="name">
+            <view class="picker-value">
+              <text class="picker-text">{{carTypes[carTypeIndex].name}}</text>
+              <text class="picker-arrow">▼</text>
+            </view>
+          </picker>
+        </view>
+      </view>
+      
+      <!-- 预约时间 -->
+      <view class="form-section">
+        <view class="section-header">
+          <view class="section-icon">🕐</view>
+          <text class="section-title">预约时间</text>
+        </view>
+        <view class="form-row">
+          <view class="form-item half">
+            <text class="label">预约日期</text>
+            <picker class="picker" mode="date" bindchange="bindDateChange" value="{{formData.reservationDate}}" start="{{today}}" end="{{maxDate}}">
+              <view class="picker-value">
+                <text class="picker-text {{formData.reservationDate ? '' : 'placeholder'}}">{{formData.reservationDate || '选择日期'}}</text>
+                <text class="picker-arrow">▼</text>
+              </view>
+            </picker>
+          </view>
+          <view class="form-item half">
+            <text class="label">预约时间</text>
+            <picker class="picker" mode="time" bindchange="bindTimeChange" value="{{formData.reservationTime}}">
+              <view class="picker-value">
+                <text class="picker-text {{formData.reservationTime ? '' : 'placeholder'}}">{{formData.reservationTime || '选择时间'}}</text>
+                <text class="picker-arrow">▼</text>
+              </view>
+            </picker>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 路线信息 -->
+      <view class="form-section">
+        <view class="section-header">
+          <view class="section-icon">📍</view>
+          <text class="section-title">路线信息</text>
+        </view>
+        <view class="route-input-group">
+          <view class="route-markers">
+            <view class="marker start">起</view>
+            <view class="marker-line"></view>
+            <view class="marker end">终</view>
+          </view>
+          <view class="route-inputs">
+            <view class="form-item route-item">
+              <input class="input" name="startPoint" placeholder="请输入起点" value="{{formData.startPoint}}" bindinput="searchStartPoint"/>
+              <view class="search-results" wx:if="{{startResults.length > 0}}">
+                <view class="result-item" wx:for="{{startResults}}" wx:key="id" bindtap="selectStartPoint" data-item="{{item}}">
+                  <image class="result-icon" src="/images/hu/location.png"/>
+                  <view class="result-text">
+                    <text class="result-title">{{item.title}}</text>
+                    <text class="result-address">{{item.address}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view class="form-item route-item">
+              <input class="input" name="endPoint" placeholder="请输入终点" value="{{formData.endPoint}}" bindinput="searchEndPoint"/>
+              <view class="search-results" wx:if="{{endResults.length > 0}}">
+                <view class="result-item" wx:for="{{endResults}}" wx:key="id" bindtap="selectEndPoint" data-item="{{item}}">
+                  <image class="result-icon" src="/images/hu/location.png"/>
+                  <view class="result-text">
+                    <text class="result-title">{{item.title}}</text>
+                    <text class="result-address">{{item.address}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        
+        <!-- 地图 -->
+        <view class="map-container">
+          <map wx:if="{{mapReady && !locationError}}" class="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{mapScale}}" markers="{{markers}}" polyline="{{polyline}}" include-points="{{includePoints}}" show-location></map>
+          <view class="map-overlay" wx:if="{{!mapReady || locationError}}">
+            <view class="loading-icon" wx:if="{{!mapReady}}">🗺️</view>
+            <text wx:if="{{!mapReady}}">地图加载中...</text>
+            <text wx:if="{{locationError}}">无法获取位置信息</text>
+          </view>
+          <view class="route-info" wx:if="{{routeCalculated}}">
+            <view class="route-info-item">
+              <text class="route-info-label">距离</text>
+              <text class="route-info-value">{{routeDistance}}</text>
+            </view>
+            <view class="route-info-divider"></view>
+            <view class="route-info-item">
+              <text class="route-info-label">预计</text>
+              <text class="route-info-value">{{routeDuration}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 备注 -->
+      <view class="form-section">
+        <view class="section-header">
+          <view class="section-icon">📝</view>
+          <text class="section-title">备注信息</text>
+        </view>
+        <view class="form-item">
+          <textarea class="textarea" name="remark" placeholder="请输入备注信息（选填）" value="{{formData.remark}}"/>
+        </view>
+      </view>
+      
+      <!-- 提交按钮 -->
+      <button class="submit-btn {{isCalculating ? 'disabled' : ''}}" form-type="submit" disabled="{{isCalculating}}">
+        <text>{{isCalculating ? '路线计算中...' : '提交预约'}}</text>
+      </button>
+    </form>
+  </view>
+</view>

@@ -1,0 +1,33 @@
+.cs-list-item {
+  align-items: center;
+  box-sizing: border-box;
+  color: #333;
+  display: -webkit-flex;
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+  line-height: 16px;
+  padding: 12px 0 12px 8rpx;
+  position: relative;
+}
+.cs-list-item::after {
+  border-bottom: 1px solid #d6d6d6;
+  box-sizing: border-box;
+  content: "";
+  height: 200%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+  width: 200%;
+}
+.cs-list-item.cs-selected-item {
+  color: #0062ff;
+  font-weight: 500;
+}
+.cs-selected-icon {
+  height: 16px;
+  margin-right: 8rpx;
+  width: 16px;
+}

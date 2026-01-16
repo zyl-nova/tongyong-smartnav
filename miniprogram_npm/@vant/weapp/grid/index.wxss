@@ -1,0 +1,6 @@
+@import "/miniprogram_npm/@vant/weapp/common/index.wxss";
+.van-grid {
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}

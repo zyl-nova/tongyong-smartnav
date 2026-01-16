@@ -1,0 +1,51 @@
+<!--pages/message/message.wxml-->
+<view class="container">
+  <!-- 顶部背景 -->
+  <view class="header-bg">
+    <view class="header-content">
+      <text class="header-title">消息中心</text>
+      <text class="header-subtitle">及时获取最新通知</text>
+    </view>
+  </view>
+
+  <view class="content-area">
+    <!-- 消息分类Tab -->
+    <view class="message-tabs">
+      <view class="tab-item {{currentTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-tab="0">
+        <text>全部</text>
+        <view class="tab-badge" wx:if="{{unreadCount > 0}}">{{unreadCount}}</view>
+      </view>
+      <view class="tab-item {{currentTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-tab="1">
+        <text>系统通知</text>
+      </view>
+      <view class="tab-item {{currentTab === 2 ? 'active' : ''}}" bindtap="switchTab" data-tab="2">
+        <text>预约消息</text>
+      </view>
+    </view>
+
+    <!-- 消息列表 -->
+    <view class="message-list">
+      <view class="message-card {{!item.read ? 'unread' : ''}}" wx:for="{{messageList}}" wx:key="id" bindtap="navigateToDetail" data-id="{{item.id}}">
+        <view class="message-icon-wrap {{item.iconType || item.type}}">
+          <image class="message-icon" src="{{item.icon}}" mode="aspectFit"/>
+          <view class="unread-dot" wx:if="{{!item.read}}"></view>
+        </view>
+        <view class="message-content">
+          <view class="message-header">
+            <text class="message-title">{{item.title}}</text>
+            <text class="message-time">{{item.time}}</text>
+          </view>
+          <text class="message-desc">{{item.content}}</text>
+        </view>
+        <view class="message-arrow">></view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-container" wx:if="{{messageList.length === 0}}">
+      <view class="empty-icon">📭</view>
+      <text class="empty-text">暂无消息</text>
+      <text class="empty-hint">新消息会在这里显示</text>
+    </view>
+  </view>
+</view>

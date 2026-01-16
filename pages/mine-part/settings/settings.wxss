@@ -1,0 +1,164 @@
+/* 页面容器 */
+.container {
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* 顶部背景 */
+.header-bg {
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  padding: 40rpx 32rpx 100rpx;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-title {
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+
+.header-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 26rpx;
+}
+
+/* 内容区域 */
+.content-area {
+  margin-top: -60rpx;
+  padding: 0 24rpx 40rpx;
+}
+
+/* 设置卡片 */
+.settings-card {
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 24rpx;
+  overflow: hidden;
+}
+
+.card-header {
+  align-items: center;
+  background: #f8f9fa;
+  display: flex;
+  padding: 20rpx 24rpx;
+}
+
+.card-icon {
+  font-size: 24rpx;
+  margin-right: 10rpx;
+}
+
+.card-title {
+  color: #999;
+  font-size: 26rpx;
+}
+
+/* 设置项 */
+.settings-item {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 28rpx 24rpx;
+  position: relative;
+}
+
+.settings-item::after {
+  background: #f5f5f5;
+  bottom: 0;
+  content: '';
+  height: 1rpx;
+  left: 80rpx;
+  position: absolute;
+  right: 24rpx;
+}
+
+.settings-item:last-child::after {
+  display: none;
+}
+
+.settings-item:active {
+  background: #f8f9fa;
+}
+
+.item-left {
+  align-items: center;
+  display: flex;
+}
+
+.item-icon {
+  align-items: center;
+  border-radius: 12rpx;
+  display: flex;
+  font-size: 28rpx;
+  height: 56rpx;
+  justify-content: center;
+  margin-right: 20rpx;
+  width: 56rpx;
+}
+
+.item-icon.account {
+  background: linear-gradient(135deg, #e6f7ff 0%, #bae7ff 100%);
+}
+
+.item-icon.notification {
+  background: linear-gradient(135deg, #fff7e6 0%, #ffe7ba 100%);
+}
+
+.item-icon.privacy {
+  background: linear-gradient(135deg, #f6ffed 0%, #d9f7be 100%);
+}
+
+.item-icon.emergency {
+  background: linear-gradient(135deg, #fff1f0 0%, #ffccc7 100%);
+}
+
+.item-icon.cache {
+  background: linear-gradient(135deg, #f9f0ff 0%, #efdbff 100%);
+}
+
+.item-icon.update {
+  background: linear-gradient(135deg, #e6fffb 0%, #b5f5ec 100%);
+}
+
+.item-icon.about {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+}
+
+.item-text {
+  color: #333;
+  font-size: 30rpx;
+}
+
+.item-arrow {
+  color: #ccc;
+  font-size: 28rpx;
+}
+
+.item-value {
+  color: #999;
+  font-size: 26rpx;
+}
+
+/* 退出登录按钮 */
+.logout-btn {
+  align-items: center;
+  background: #fff;
+  border: 2rpx solid #f5222d;
+  border-radius: 44rpx;
+  color: #f5222d;
+  display: flex;
+  font-size: 32rpx;
+  height: 96rpx;
+  justify-content: center;
+  margin-top: 40rpx;
+}
+
+.logout-btn::after {
+  border: none;
+}

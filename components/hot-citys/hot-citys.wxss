@@ -1,0 +1,51 @@
+.cs-city-title {
+  color: #999;
+  font-size: 14px;
+  height: 22px;
+  line-height: 22px;
+}
+.cs-citys-wrapper {
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+}
+.cs-city-label {
+  color: #333;
+  font-size: 14px;
+  height: 32px;
+  line-height: 32px;
+  margin-top: 12px;
+  position: relative;
+  text-align: center;
+}
+.cs-city-label:nth-of-type(4n) {
+  margin-right: 0;
+}
+.cs-page-city {
+  margin-right: 24rpx;
+  width: calc((100% - 72rpx) / 4);
+}
+.cs-component-city {
+  margin-right: 16rpx;
+  width: calc((100% - 48rpx) / 4);
+}
+.cs-city-label::after {
+  border: 1px solid #d6d6d6;
+  border-radius: 8rpx;
+  box-sizing: border-box;
+  content: "";
+  height: 200%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+  width: 200%;
+}
+.cs-city-label.cs-active-city {
+  background: rgba(0, 98, 255, 0.12);
+  color: #0062ff;
+}
+.cs-city-label.cs-active-city::after {
+  border-color: #0062ff;
+}

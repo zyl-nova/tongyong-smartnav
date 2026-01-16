@@ -1,0 +1,148 @@
+<!--pages/home/home.wxml-->
+<view class="container">
+  <!-- 顶部背景区域 -->
+  <view class="header-bg">
+    <view class="header-content">
+      <text class="header-title">危险品运输管理</text>
+      <text class="header-subtitle">安全高效，智能调度</text>
+    </view>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="content-area">
+    <!-- 快速预约卡片 -->
+    <view class="quick-card" bindtap="goReserve">
+      <view class="quick-card-left">
+        <view class="quick-card-icon">
+          <text class="icon-text">📋</text>
+        </view>
+        <view class="quick-card-info">
+          <text class="quick-card-title">快速预约</text>
+          <text class="quick-card-desc">提前预约路线，快速入园</text>
+        </view>
+      </view>
+      <view class="quick-card-btn">立即预约</view>
+    </view>
+
+    <!-- 当前预约 -->
+    <view class="section-card">
+      <view class="section-header">
+        <view class="section-title-wrap">
+          <view class="title-dot"></view>
+          <text class="section-title">当前预约</text>
+        </view>
+        <text class="section-more" bindtap="goDetail">查看详情 ></text>
+      </view>
+      <view class="reservation-card">
+        <view class="reservation-route">
+          <view class="route-point-tag start">起</view>
+          <text class="route-text">东门入口</text>
+          <view class="route-arrow-line"></view>
+          <view class="route-point-tag end">终</view>
+          <text class="route-text">3号危险品仓库</text>
+        </view>
+        <view class="reservation-info">
+          <view class="info-row">
+            <text class="info-label">状态</text>
+            <view class="status-tag success">已通过</view>
+          </view>
+          <view class="info-row">
+            <text class="info-label">预约时间</text>
+            <text class="info-value">2023-05-15 09:30</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">入园时间</text>
+            <text class="info-value pending">待入园</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">车牌号码</text>
+            <text class="info-value plate">浙B12345</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 快捷功能 -->
+    <view class="section-card">
+      <view class="section-header">
+        <view class="section-title-wrap">
+          <view class="title-dot"></view>
+          <text class="section-title">快捷功能</text>
+        </view>
+      </view>
+      <view class="quick-actions">
+        <view class="action-item" bindtap="goNav">
+          <view class="action-icon-wrap nav">
+            <image class="action-icon" src="/images/hu/route.png"/>
+          </view>
+          <text class="action-text">导航</text>
+        </view>
+        <view class="action-item" bindtap="goPhoto">
+          <view class="action-icon-wrap photo">
+            <image class="action-icon" src="/images/home/photo/camera.png"/>
+          </view>
+          <text class="action-text">车辆照片</text>
+        </view>
+        <view class="action-item" bindtap="goMap">
+          <view class="action-icon-wrap map">
+            <image class="action-icon" src="/images/home/map/location.png"/>
+          </view>
+          <text class="action-text">园区地图</text>
+        </view>
+        <view class="action-item" bindtap="makeCall">
+          <view class="action-icon-wrap emergency">
+            <image class="action-icon" src="/images/hu/warning.png"/>
+          </view>
+          <text class="action-text">紧急求助</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 紧急求助 -->
+    <view class="emergency-card">
+      <view class="emergency-left">
+        <view class="emergency-icon">⚠️</view>
+        <view class="emergency-info">
+          <text class="emergency-title">紧急联系</text>
+          <text class="emergency-desc">如遇紧急情况，请立即联系园区管理员</text>
+        </view>
+      </view>
+      <view class="emergency-btn" bindtap="makeCall">一键呼叫</view>
+    </view>
+
+    <!-- 常用路线 -->
+    <view class="section-card">
+      <view class="section-header">
+        <view class="section-title-wrap">
+          <view class="title-dot"></view>
+          <text class="section-title">常用路线</text>
+        </view>
+        <text class="section-more" bindtap="goAllRoute">全部路线 ></text>
+      </view>
+      <scroll-view scroll-x class="route-scroll" enhanced show-scrollbar="{{false}}">
+        <view class="route-list">
+          <view class="route-item" bindtap="selectRoute" data-route="东门→3号仓">
+            <view class="route-item-icon chemical">🧪</view>
+            <text class="route-name">东门→3号仓</text>
+            <text class="route-desc">化学品专用</text>
+          </view>
+          <view class="route-item" bindtap="selectRoute" data-route="北门→5号仓">
+            <view class="route-item-icon gas">🔥</view>
+            <text class="route-name">北门→5号仓</text>
+            <text class="route-desc">燃气专用</text>
+          </view>
+          <view class="route-item" bindtap="selectRoute" data-route="东门→7号仓">
+            <view class="route-item-icon danger">☢️</view>
+            <text class="route-name">东门→7号仓</text>
+            <text class="route-desc">常规危险品</text>
+          </view>
+          <view class="route-item" bindtap="selectRoute" data-route="西门→9号仓">
+            <view class="route-item-icon special">⚡</view>
+            <text class="route-name">西门→9号仓</text>
+            <text class="route-desc">特殊危险品</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

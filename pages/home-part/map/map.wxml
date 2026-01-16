@@ -1,0 +1,81 @@
+<!--pages/home-part/map/map.wxml-->
+<view class="container">
+  <!-- 顶部信息栏 -->
+  <view class="header-bar">
+    <view class="header-left">
+      <text class="header-title">园区地图</text>
+      <text class="update-time">更新: {{updateTime}}</text>
+    </view>
+    <view class="vehicle-count">
+      <text class="count-value">{{filteredVehicleCount || 0}}</text>
+      <text class="count-label">辆</text>
+    </view>
+  </view>
+  
+  <!-- 筛选栏 -->
+  <view class="filter-container">
+    <scroll-view scroll-x class="filter-scroll" enhanced show-scrollbar="{{false}}">
+      <view class="filter-list">
+        <view class="filter-item {{activeZone === item.value ? 'active' : ''}}" 
+              wx:for="{{zoneTypes}}" wx:key="value" 
+              bindtap="filterByZone" data-zone="{{item.value}}">
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  
+  <!-- 地图区域 -->
+  <view class="map-container">
+    <map id="map" class="map"
+         longitude="{{longitude}}" 
+         latitude="{{latitude}}" 
+         scale="{{scale}}"
+         markers="{{markers}}"
+         polygons="{{polygons}}"
+         show-location
+         bindmarkertap="onMarkerTap" />
+    
+    <!-- 地图控制按钮 -->
+    <view class="map-controls">
+      <view class="control-btn location" bindtap="centerLocation">
+        <text>📍</text>
+      </view>
+      <view class="control-btn layers" bindtap="toggleZoneDisplay">
+        <text>{{showZones ? '🗺️' : '📊'}}</text>
+      </view>
+    </view>
+    
+    <!-- 图例 -->
+    <view class="map-legend">
+      <view class="legend-item">
+        <view class="legend-dot normal"></view>
+        <text>普通车辆</text>
+      </view>
+      <view class="legend-item">
+        <view class="legend-dot danger"></view>
+        <text>危险品车</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <view class="action-item" bindtap="centerLocation">
+      <view class="action-icon">📍</view>
+      <text>定位</text>
+    </view>
+    <view class="action-item" bindtap="refreshData">
+      <view class="action-icon">🔄</view>
+      <text>刷新</text>
+    </view>
+    <view class="action-item" bindtap="toggleZoneDisplay">
+      <view class="action-icon">{{showZones ? '👁️' : '🙈'}}</view>
+      <text>{{showZones ? '隐藏区域' : '显示区域'}}</text>
+    </view>
+    <view class="action-item" bindtap="searchVehicle">
+      <view class="action-icon">🔍</view>
+      <text>搜索</text>
+    </view>
+  </view>
+</view>

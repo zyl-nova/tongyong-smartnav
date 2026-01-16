@@ -1,0 +1,24 @@
+<view
+  class="container"
+  style="background-color:{{backgroundColor}};font-size:{{fontsize}}px;height: {{totalTopHeight}}px;"
+>
+  <view
+    class="header-container"
+    style="height:{{titleBarHeight}}px;line-height:{{titleBarHeight}}px;top:{{statusBarHeight}}px;"
+  >
+    <view
+      class="title-bar {{isIOS?'title-bar-center':'title-bar-left'}}"
+      style="height:{{titleBarHeight}}px;line-height:{{titleBarHeight}}px;"
+    >
+      <view>{{title}}</view>
+    </view>
+    <view
+      bindtap="navigatorBack"
+      class="back-btn"
+      hoverClass="back-btn-hover"
+      style="top:0; width:45px; height:{{titleBarHeight}}px"
+    >
+      <view class="btn-leftarrow"></view>
+    </view>
+  </view>
+</view>

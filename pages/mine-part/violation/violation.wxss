@@ -1,0 +1,277 @@
+/* 页面容器 */
+.container {
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* 顶部背景 */
+.header-bg {
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  padding: 40rpx 32rpx 100rpx;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-title {
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+
+.header-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 26rpx;
+}
+
+/* 内容区域 */
+.content-area {
+  margin-top: -60rpx;
+  padding: 0 24rpx 40rpx;
+}
+
+/* 警告卡片 */
+.warning-card {
+  background: linear-gradient(135deg, #fff2e8 0%, #ffbb96 100%);
+  border: 2rpx solid #ffbb96;
+  border-radius: 20rpx;
+  margin-bottom: 24rpx;
+  padding: 24rpx;
+}
+
+.warning-header {
+  align-items: center;
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.warning-icon {
+  font-size: 48rpx;
+  margin-right: 16rpx;
+}
+
+.warning-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.warning-title {
+  color: #d46b08;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.warning-distance {
+  color: #f5222d;
+  font-size: 26rpx;
+  font-weight: 500;
+  margin-top: 4rpx;
+}
+
+.warning-details {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12rpx;
+  padding: 16rpx;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10rpx 0;
+}
+
+.detail-label {
+  color: #874d00;
+  font-size: 26rpx;
+}
+
+.detail-value {
+  color: #333;
+  font-size: 26rpx;
+}
+
+.detail-value.highlight {
+  color: #f5222d;
+  font-weight: 500;
+}
+
+/* 成功卡片 */
+.success-card {
+  align-items: center;
+  background: linear-gradient(135deg, #f6ffed 0%, #d9f7be 100%);
+  border: 2rpx solid #b7eb8f;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24rpx;
+  padding: 60rpx 24rpx;
+}
+
+.success-icon {
+  align-items: center;
+  background: linear-gradient(135deg, #52c41a 0%, #73d13d 100%);
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  font-size: 48rpx;
+  height: 100rpx;
+  justify-content: center;
+  margin-bottom: 20rpx;
+  width: 100rpx;
+}
+
+.success-text {
+  color: #389e0d;
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+
+.success-hint {
+  color: #52c41a;
+  font-size: 26rpx;
+}
+
+/* 地图卡片 */
+.map-card {
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 24rpx;
+  padding: 24rpx;
+}
+
+.card-header {
+  align-items: center;
+  border-bottom: 1rpx solid #f5f5f5;
+  display: flex;
+  margin-bottom: 20rpx;
+  padding-bottom: 16rpx;
+}
+
+.card-icon {
+  font-size: 28rpx;
+  margin-right: 10rpx;
+}
+
+.card-title {
+  color: #333;
+  flex: 1;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.card-count {
+  background: #f5222d;
+  border-radius: 20rpx;
+  color: #fff;
+  font-size: 22rpx;
+  padding: 4rpx 12rpx;
+}
+
+.map-container {
+  position: relative;
+}
+
+.violation-map {
+  border-radius: 12rpx;
+  height: 400rpx;
+  width: 100%;
+}
+
+.map-legend {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8rpx;
+  bottom: 16rpx;
+  display: flex;
+  gap: 24rpx;
+  left: 16rpx;
+  padding: 12rpx 16rpx;
+  position: absolute;
+}
+
+.legend-item {
+  align-items: center;
+  display: flex;
+}
+
+.legend-line {
+  border-radius: 2rpx;
+  height: 6rpx;
+  margin-right: 8rpx;
+  width: 32rpx;
+}
+
+.legend-line.planned {
+  background: #1890ff;
+}
+
+.legend-line.actual {
+  background: #f5222d;
+}
+
+.legend-item text {
+  color: #666;
+  font-size: 22rpx;
+}
+
+/* 区块卡片 */
+.section-card {
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 24rpx;
+  padding: 24rpx;
+}
+
+/* 违规列表 */
+.violation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.violation-item {
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  padding: 20rpx;
+}
+
+.violation-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+
+.violation-type {
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  padding: 6rpx 16rpx;
+}
+
+.violation-type.normal {
+  background: linear-gradient(135deg, #fff7e6 0%, #ffe7ba 100%);
+  color: #d46b08;
+}
+
+.violation-type.serious {
+  background: linear-gradient(135deg, #fff1f0 0%, #ffccc7 100%);
+  color: #f5222d;
+}
+
+.violation-time {
+  color: #999;
+  font-size: 24rpx;
+}
+
+.violation-desc {
+  color: #666;
+  font-size: 26rpx;
+  line-height: 1.6;
+}

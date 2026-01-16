@@ -1,0 +1,379 @@
+/* 页面容器 */
+.container {
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* 顶部背景 */
+.header-bg {
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  padding: 40rpx 32rpx 100rpx;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-title {
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+
+.header-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 26rpx;
+}
+
+/* 内容区域 */
+.content-area {
+  margin-top: -60rpx;
+  padding: 0 24rpx 40rpx;
+}
+
+/* 筛选卡片 */
+.filter-card {
+  align-items: center;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 24rpx;
+  padding: 20rpx;
+}
+
+.filter-item {
+  align-items: center;
+  background: #f5f7fa;
+  border-radius: 12rpx;
+  display: flex;
+  flex: 1;
+  font-size: 26rpx;
+  justify-content: center;
+  padding: 16rpx 20rpx;
+}
+
+.filter-arrow {
+  color: #999;
+  font-size: 20rpx;
+  margin-left: 8rpx;
+}
+
+.add-btn {
+  align-items: center;
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  font-size: 36rpx;
+  height: 72rpx;
+  justify-content: center;
+  line-height: 1;
+  width: 72rpx;
+}
+
+.add-btn text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* 预约列表 */
+.reservation-list {
+  height: calc(100vh - 340rpx);
+}
+
+/* 预约卡片 */
+.reservation-card {
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 20rpx;
+  padding: 24rpx;
+}
+
+.card-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.reservation-number {
+  color: #999;
+  font-size: 24rpx;
+}
+
+.status-tag {
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  padding: 6rpx 16rpx;
+}
+
+.status-tag.pending {
+  background: linear-gradient(135deg, #fff7e6 0%, #ffe7ba 100%);
+  color: #fa8c16;
+}
+
+.status-tag.confirmed {
+  background: linear-gradient(135deg, #f6ffed 0%, #d9f7be 100%);
+  color: #52c41a;
+}
+
+.status-tag.completed {
+  background: linear-gradient(135deg, #e6f7ff 0%, #bae7ff 100%);
+  color: #1890ff;
+}
+
+.status-tag.cancelled {
+  background: linear-gradient(135deg, #fff1f0 0%, #ffccc7 100%);
+  color: #f5222d;
+}
+
+/* 路线信息 */
+.route-info {
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  margin-bottom: 16rpx;
+  padding: 20rpx;
+}
+
+.route-point {
+  align-items: center;
+  display: flex;
+}
+
+.point-tag {
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  font-size: 20rpx;
+  height: 36rpx;
+  justify-content: center;
+  margin-right: 12rpx;
+  width: 36rpx;
+}
+
+.point-tag.start {
+  background: linear-gradient(135deg, #52c41a 0%, #73d13d 100%);
+}
+
+.point-tag.end {
+  background: linear-gradient(135deg, #f5222d 0%, #ff4d4f 100%);
+}
+
+.point-text {
+  color: #333;
+  font-size: 28rpx;
+}
+
+.route-line {
+  background: linear-gradient(180deg, #52c41a, #1890ff, #f5222d);
+  height: 30rpx;
+  margin: 8rpx 0 8rpx 17rpx;
+  width: 3rpx;
+}
+
+/* 信息行 */
+.info-row {
+  display: flex;
+  gap: 24rpx;
+  margin-bottom: 16rpx;
+}
+
+.info-item {
+  align-items: center;
+  display: flex;
+}
+
+.info-icon {
+  font-size: 24rpx;
+  margin-right: 8rpx;
+}
+
+.info-text {
+  color: #666;
+  font-size: 26rpx;
+}
+
+.info-text.plate {
+  background: #f0f0f0;
+  border-radius: 6rpx;
+  font-weight: 500;
+  padding: 4rpx 12rpx;
+}
+
+/* 操作按钮 */
+.card-actions {
+  display: flex;
+  gap: 16rpx;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  padding: 0 24rpx;
+}
+
+.action-btn.view {
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  color: #fff;
+}
+
+.action-btn.cancel {
+  background: #fff;
+  border: 2rpx solid #f5222d;
+  color: #f5222d;
+}
+
+.action-btn::after {
+  border: none;
+}
+
+/* 空状态 */
+.empty-state {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 100rpx 0;
+}
+
+.empty-icon {
+  font-size: 100rpx;
+  margin-bottom: 24rpx;
+}
+
+.empty-text {
+  color: #999;
+  font-size: 30rpx;
+  margin-bottom: 12rpx;
+}
+
+.empty-hint {
+  color: #bbb;
+  font-size: 26rpx;
+}
+
+/* 弹窗遮罩 */
+.modal-mask {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
+/* 弹窗容器 */
+.modal-container {
+  background: #fff;
+  border-radius: 24rpx;
+  left: 0;
+  margin: auto;
+  max-height: 80vh;
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  top: 15%;
+  width: 85%;
+  z-index: 101;
+}
+
+.modal-header {
+  align-items: center;
+  border-bottom: 1rpx solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  padding: 28rpx 32rpx;
+}
+
+.modal-title {
+  color: #333;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.modal-close {
+  color: #999;
+  font-size: 44rpx;
+  line-height: 1;
+}
+
+.modal-body {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 24rpx 32rpx;
+}
+
+.form-item {
+  margin-bottom: 24rpx;
+}
+
+.form-label {
+  color: #666;
+  display: block;
+  font-size: 26rpx;
+  margin-bottom: 12rpx;
+}
+
+.form-input {
+  background: #f8f9fa;
+  border: 2rpx solid #e8e8e8;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  height: 80rpx;
+  padding: 0 20rpx;
+}
+
+.form-picker {
+  background: #f8f9fa;
+  border: 2rpx solid #e8e8e8;
+  border-radius: 12rpx;
+  color: #333;
+  font-size: 28rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 20rpx;
+}
+
+.modal-footer {
+  border-top: 1rpx solid #f0f0f0;
+  display: flex;
+  gap: 24rpx;
+  padding: 24rpx 32rpx;
+}
+
+.modal-btn {
+  align-items: center;
+  border-radius: 44rpx;
+  display: flex;
+  flex: 1;
+  font-size: 28rpx;
+  height: 80rpx;
+  justify-content: center;
+}
+
+.modal-btn.cancel {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.modal-btn.confirm {
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  color: #fff;
+}
+
+.modal-btn::after {
+  border: none;
+}

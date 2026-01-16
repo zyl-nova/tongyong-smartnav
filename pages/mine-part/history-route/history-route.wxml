@@ -1,0 +1,103 @@
+<!--pages/mine-part/history-route/history-route.wxml-->
+<view class="container">
+  <scroll-view scroll-y class="history-scroll" bindscrolltolower="onReachBottom" refresher-enabled bindrefresherrefresh="onPullDownRefresh" refresher-triggered="{{isRefreshing}}">
+    <view class="history-list">
+      <view class="history-card" wx:for="{{historyList}}" wx:key="id">
+        <!-- 卡片头部：行程ID和日期时间 -->
+        <view class="card-header">
+          <view class="header-left">
+            <text class="route-id">行程ID: {{item.id}}</text>
+          </view>
+          <view class="header-right">
+            <text class="route-date">{{item.date}}</text>
+            <text class="route-time">{{item.time}}</text>
+          </view>
+        </view>
+
+        <!-- 路线信息 -->
+        <view class="route-section">
+          <view class="route-line">
+            <view class="route-point start">
+              <view class="point-marker start-marker">起</view>
+              <text class="point-text">{{item.startPoint}}</text>
+            </view>
+            <view class="route-arrow">
+              <view class="arrow-line"></view>
+              <view class="arrow-head"></view>
+            </view>
+            <view class="route-point end">
+              <view class="point-marker end-marker">终</view>
+              <text class="point-text">{{item.endPoint}}</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 详细信息标签 -->
+        <view class="info-tags">
+          <view class="info-tag">
+            <text class="tag-icon">📍</text>
+            <text class="tag-text">里程: {{item.distance}}</text>
+          </view>
+          <view class="info-tag">
+            <text class="tag-icon">⏱</text>
+            <text class="tag-text">耗时: {{item.duration}}</text>
+          </view>
+          <view class="info-tag">
+            <text class="tag-icon">📦</text>
+            <text class="tag-text">货物: {{item.cargoInfo}}</text>
+          </view>
+        </view>
+
+        <!-- 司机信息和状态 -->
+        <view class="card-footer">
+          <view class="driver-section">
+            <view class="driver-avatar-wrap">
+              <image class="driver-avatar" src="{{item.driverAvatar}}" mode="aspectFill"></image>
+            </view>
+            <view class="driver-info">
+              <text class="driver-name">{{item.driverName}}</text>
+              <text class="driver-plate">{{item.licensePlate}}</text>
+            </view>
+          </view>
+          <view class="status-section">
+            <view class="route-status {{item.status === 'completed' ? 'status-completed' : 'status-cancelled'}}">
+              {{item.status === 'completed' ? '已完成' : '已取消'}}
+            </view>
+          </view>
+        </view>
+
+        <!-- 操作按钮（可选，滑动删除或点击删除） -->
+        <view class="action-bar" bindtap="showDeleteDialog" data-index="{{index}}">
+          <text class="action-text">删除记录</text>
+        </view>
+      </view>
+
+      <!-- 加载更多 -->
+      <view class="load-more" wx:if="{{isLoadingMore}}">
+        <text>加载中...</text>
+      </view>
+      <view class="no-more" wx:if="{{!hasMoreData && historyList.length > 0}}">
+        <text>— 没有更多了 —</text>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-container" wx:if="{{historyList.length === 0 && !isRefreshing}}">
+      <image class="empty-image" src="/images/hu/empty.png" mode="aspectFit"></image>
+      <text class="empty-text">暂无历史路线</text>
+    </view>
+  </scroll-view>
+
+  <!-- 删除确认弹窗 -->
+  <view class="delete-dialog" wx:if="{{showDeleteDialog}}">
+    <view class="dialog-mask" bindtap="hideDeleteDialog"></view>
+    <view class="dialog-content">
+      <text class="dialog-title">确认删除</text>
+      <text class="dialog-message">确定要删除这条历史路线记录吗？</text>
+      <view class="dialog-buttons">
+        <button class="dialog-button cancel" bindtap="hideDeleteDialog">取消</button>
+        <button class="dialog-button confirm" bindtap="confirmDelete">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

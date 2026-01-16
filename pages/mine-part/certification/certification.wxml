@@ -1,0 +1,90 @@
+<!--pages/mine-part/certification/certification.wxml-->
+<view class="container">
+  <!-- 顶部提示 -->
+  <view class="tips-banner">
+    <text class="tips-icon">💡</text>
+    <text class="tips-text">请确保上传的证件清晰可辨，信息真实有效</text>
+  </view>
+
+  <!-- 基本信息卡片 -->
+  <view class="form-card">
+    <view class="card-header">
+      <text class="card-title">基本信息</text>
+    </view>
+    <view class="form-item">
+      <view class="form-label">
+        <text class="label-text">真实姓名</text>
+        <text class="required">*</text>
+      </view>
+      <input class="form-input" placeholder="请输入真实姓名" placeholder-class="placeholder" value="{{realName}}" bindinput="onInputName" />
+    </view>
+    <view class="form-item no-border">
+      <view class="form-label">
+        <text class="label-text">身份证号</text>
+        <text class="required">*</text>
+      </view>
+      <input class="form-input" placeholder="请输入身份证号" placeholder-class="placeholder" value="{{idNumber}}" bindinput="onInputIdNumber" maxlength="18" />
+    </view>
+  </view>
+  
+  <!-- 证件上传卡片 -->
+  <view class="form-card">
+    <view class="card-header">
+      <text class="card-title">证件上传</text>
+    </view>
+    
+    <!-- 驾驶证 -->
+    <view class="upload-item">
+      <view class="upload-header">
+        <view class="upload-title-row">
+          <text class="upload-title">驾驶证</text>
+          <text class="required">*</text>
+        </view>
+        <text class="upload-desc">请上传驾驶证正本照片</text>
+      </view>
+      <view class="upload-area" bindtap="chooseLicenseImage">
+        <image wx:if="{{licenseImage}}" src="{{licenseImage}}" mode="aspectFill" class="preview-img" />
+        <view wx:else class="upload-placeholder">
+          <view class="upload-icon-wrapper">
+            <text class="upload-icon">+</text>
+          </view>
+          <text class="upload-text">点击上传</text>
+        </view>
+        <view wx:if="{{licenseImage}}" class="reupload-btn">
+          <text>重新上传</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 从业资格证 -->
+    <view class="upload-item no-border">
+      <view class="upload-header">
+        <view class="upload-title-row">
+          <text class="upload-title">从业资格证</text>
+          <text class="required">*</text>
+        </view>
+        <text class="upload-desc">请上传道路运输从业资格证照片</text>
+      </view>
+      <view class="upload-area" bindtap="choosePermitImage">
+        <image wx:if="{{permitImage}}" src="{{permitImage}}" mode="aspectFill" class="preview-img" />
+        <view wx:else class="upload-placeholder">
+          <view class="upload-icon-wrapper">
+            <text class="upload-icon">+</text>
+          </view>
+          <text class="upload-text">点击上传</text>
+        </view>
+        <view wx:if="{{permitImage}}" class="reupload-btn">
+          <text>重新上传</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部提交按钮 -->
+  <view class="bottom-area">
+    <button class="submit-btn {{canSubmit ? '' : 'disabled'}}" bindtap="submitCertification">
+      提交认证
+    </button>
+    <text class="agreement-text">提交即表示您同意<text class="link">《用户认证协议》</text></text>
+  </view>
+</view>

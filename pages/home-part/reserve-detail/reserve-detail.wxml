@@ -1,0 +1,98 @@
+<!--pages/home-part/reserve-detail/reserve-detail.wxml-->
+<view class="container">
+  <!-- 加载状态 -->
+  <view class="loading-container" wx:if="{{loading}}">
+    <view class="loading-icon">⏳</view>
+    <text class="loading-text">加载中...</text>
+  </view>
+  
+  <block wx:if="{{!loading && detail}}">
+    <!-- 顶部状态卡片 -->
+    <view class="status-header {{detail.status === '已通过' ? 'approved' : detail.status === '待审核' ? 'pending' : 'rejected'}}">
+      <view class="status-icon">
+        {{detail.status === '已通过' ? '✓' : detail.status === '待审核' ? '⏱' : '✕'}}
+      </view>
+      <text class="status-text">{{detail.status}}</text>
+      <text class="status-hint">
+        {{detail.status === '已通过' ? '您的预约已审核通过' : detail.status === '待审核' ? '请耐心等待审核结果' : '您的预约未通过审核'}}
+      </text>
+    </view>
+
+    <view class="content-area">
+      <!-- 预约信息卡片 -->
+      <view class="info-card">
+        <view class="card-header">
+          <view class="card-icon">📋</view>
+          <text class="card-title">预约信息</text>
+        </view>
+        <view class="info-list">
+          <view class="info-item">
+            <text class="info-label">预约路线</text>
+            <text class="info-value route">{{detail.route}}</text>
+          </view>
+          <view class="info-item">
+            <text class="info-label">车牌号</text>
+            <text class="info-value plate">{{detail.licensePlate}}</text>
+          </view>
+          <view class="info-item">
+            <text class="info-label">司机姓名</text>
+            <text class="info-value">{{detail.driverName}}</text>
+          </view>
+          <view class="info-item">
+            <text class="info-label">联系电话</text>
+            <text class="info-value phone">{{detail.phone}}</text>
+          </view>
+          <view class="info-item">
+            <text class="info-label">危险品类型</text>
+            <text class="info-value danger">{{detail.dangerousType}}</text>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 时间信息卡片 -->
+      <view class="info-card">
+        <view class="card-header">
+          <view class="card-icon">🕐</view>
+          <text class="card-title">时间信息</text>
+        </view>
+        <view class="info-list">
+          <view class="info-item">
+            <text class="info-label">提交时间</text>
+            <text class="info-value">{{detail.createTime}}</text>
+          </view>
+          <view class="info-item">
+            <text class="info-label">预约入园</text>
+            <text class="info-value highlight">{{detail.entryTime}}</text>
+          </view>
+          <view class="info-item" wx:if="{{detail.actualEntryTime}}">
+            <text class="info-label">实际入园</text>
+            <text class="info-value">{{detail.actualEntryTime}}</text>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 备注信息卡片 -->
+      <view class="info-card" wx:if="{{detail.reviewRemark || detail.remarks}}">
+        <view class="card-header">
+          <view class="card-icon">📝</view>
+          <text class="card-title">备注信息</text>
+        </view>
+        <view class="info-list">
+          <view class="info-item column" wx:if="{{detail.reviewRemark}}">
+            <text class="info-label">审核备注</text>
+            <text class="info-value remark">{{detail.reviewRemark}}</text>
+          </view>
+          <view class="info-item column" wx:if="{{detail.remarks}}">
+            <text class="info-label">申请备注</text>
+            <text class="info-value remark">{{detail.remarks}}</text>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 取消按钮 -->
+      <button class="cancel-btn" wx:if="{{detail.status === '待审核' || detail.status === '已通过'}}" bindtap="cancelReservation">
+        取消预约
+      </button>
+    </view>
+  </block>
+</view>

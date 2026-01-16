@@ -1,0 +1,125 @@
+<!--pages/mine-part/reservation/reservation.wxml-->
+<view class="container">
+  <!-- 顶部背景 -->
+  <view class="header-bg">
+    <view class="header-content">
+      <text class="header-title">我的预约</text>
+      <text class="header-subtitle">查看和管理您的预约记录</text>
+    </view>
+  </view>
+
+  <view class="content-area">
+    <!-- 筛选栏 -->
+    <view class="filter-card">
+      <picker bindchange="statusFilterChange" value="{{statusIndex}}" range="{{statusOptions}}" range-key="name">
+        <view class="filter-item">
+          <text>{{statusOptions[statusIndex].name}}</text>
+          <text class="filter-arrow">▼</text>
+        </view>
+      </picker>
+      <picker mode="date" fields="month" bindchange="dateFilterChange" value="{{currentDate}}">
+        <view class="filter-item">
+          <text>{{dateSelected ? currentDate : '全部日期'}}</text>
+          <text class="filter-arrow">▼</text>
+        </view>
+      </picker>
+      <view class="add-btn" bindtap="showAddReservationForm">
+        <text>+</text>
+      </view>
+    </view>
+
+    <!-- 预约列表 -->
+    <scroll-view scroll-y class="reservation-list">
+      <view class="reservation-card" wx:for="{{filteredReservations}}" wx:key="id">
+        <view class="card-header">
+          <text class="reservation-number">{{item.reservationNumber}}</text>
+          <view class="status-tag {{item.status === '待确认' ? 'pending' : item.status === '已确认' ? 'confirmed' : item.status === '已完成' ? 'completed' : 'cancelled'}}">
+            {{item.status}}
+          </view>
+        </view>
+        
+        <view class="route-info">
+          <view class="route-point">
+            <view class="point-tag start">起</view>
+            <text class="point-text">{{item.startPoint}}</text>
+          </view>
+          <view class="route-line"></view>
+          <view class="route-point">
+            <view class="point-tag end">终</view>
+            <text class="point-text">{{item.endPoint}}</text>
+          </view>
+        </view>
+        
+        <view class="info-row">
+          <view class="info-item">
+            <text class="info-icon">📅</text>
+            <text class="info-text">{{item.date}} {{item.time}}</text>
+          </view>
+          <view class="info-item">
+            <text class="info-icon">🚛</text>
+            <text class="info-text plate">{{item.licensePlate}}</text>
+          </view>
+        </view>
+        
+        <view class="card-actions">
+          <button class="action-btn view" size="mini" bindtap="viewRoute" data-id="{{item.id}}">查看路线</button>
+          <button class="action-btn cancel" size="mini" wx:if="{{item.status === '待确认'}}" bindtap="cancelReservation" data-id="{{item.id}}">取消预约</button>
+        </view>
+      </view>
+
+      <!-- 空状态 -->
+      <view class="empty-state" wx:if="{{filteredReservations.length === 0}}">
+        <view class="empty-icon">📋</view>
+        <text class="empty-text">暂无预约记录</text>
+        <text class="empty-hint">点击右上角+号创建新预约</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 添加预约弹窗 -->
+  <view class="modal-mask" wx:if="{{isAddFormVisible}}" bindtap="hideAddReservationForm"></view>
+  <view class="modal-container" wx:if="{{isAddFormVisible}}">
+    <view class="modal-header">
+      <text class="modal-title">新增预约</text>
+      <view class="modal-close" bindtap="hideAddReservationForm">×</view>
+    </view>
+    <view class="modal-body">
+      <view class="form-item">
+        <text class="form-label">预约编号</text>
+        <input class="form-input" value="{{newReservation.reservationNumber}}" disabled placeholder="自动生成"/>
+      </view>
+      <view class="form-item">
+        <text class="form-label">起点</text>
+        <input class="form-input" value="{{newReservation.startPoint}}" bindinput="setStartPoint" placeholder="请输入起点"/>
+      </view>
+      <view class="form-item">
+        <text class="form-label">终点</text>
+        <input class="form-input" value="{{newReservation.endPoint}}" bindinput="setEndPoint" placeholder="请输入终点"/>
+      </view>
+      <view class="form-item">
+        <text class="form-label">日期</text>
+        <picker mode="date" value="{{newReservation.date}}" bindchange="setDate">
+          <view class="form-picker">{{newReservation.date || '选择日期'}}</view>
+        </picker>
+      </view>
+      <view class="form-item">
+        <text class="form-label">时间</text>
+        <picker mode="time" value="{{newReservation.time}}" bindchange="setTime">
+          <view class="form-picker">{{newReservation.time || '选择时间'}}</view>
+        </picker>
+      </view>
+      <view class="form-item">
+        <text class="form-label">车辆类型</text>
+        <input class="form-input" value="{{newReservation.vehicleType}}" bindinput="setVehicleType" placeholder="请输入车辆类型"/>
+      </view>
+      <view class="form-item">
+        <text class="form-label">车牌号</text>
+        <input class="form-input" value="{{newReservation.licensePlate}}" bindinput="setLicensePlate" placeholder="请输入车牌号"/>
+      </view>
+    </view>
+    <view class="modal-footer">
+      <button class="modal-btn cancel" bindtap="hideAddReservationForm">取消</button>
+      <button class="modal-btn confirm" bindtap="submitAddReservation">确认添加</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,102 @@
+<!--pages/home-part/emergency/emergency.wxml-->
+<view class="container">
+  <!-- 顶部警示区 -->
+  <view class="header-bg">
+    <view class="warning-icon-wrap">
+      <text class="warning-icon">🆘</text>
+    </view>
+    <text class="header-title">紧急求助</text>
+    <text class="header-subtitle">如遇紧急情况，请选择事故类型</text>
+  </view>
+
+  <view class="content-area">
+    <!-- 当前位置 -->
+    <view class="location-card">
+      <view class="location-header">
+        <text class="location-icon">📍</text>
+        <text class="location-label">当前位置</text>
+      </view>
+      <text class="location-text">{{currentLocation || '正在定位中...'}}</text>
+    </view>
+
+    <!-- 事故类型 -->
+    <view class="section-card">
+      <view class="section-header">
+        <text class="section-icon">⚠️</text>
+        <text class="section-title">选择事故类型</text>
+      </view>
+      <view class="type-grid">
+        <view class="type-item leak" bindtap="triggerEmergency" data-type="leak">
+          <view class="type-icon-wrap">
+            <text class="type-emoji">💧</text>
+          </view>
+          <text class="type-name">泄漏事故</text>
+          <text class="type-desc">化学品泄漏</text>
+        </view>
+        <view class="type-item fire" bindtap="triggerEmergency" data-type="fire">
+          <view class="type-icon-wrap">
+            <text class="type-emoji">🔥</text>
+          </view>
+          <text class="type-name">火灾事故</text>
+          <text class="type-desc">起火燃烧</text>
+        </view>
+        <view class="type-item crash" bindtap="triggerEmergency" data-type="crash">
+          <view class="type-icon-wrap">
+            <text class="type-emoji">💥</text>
+          </view>
+          <text class="type-name">碰撞事故</text>
+          <text class="type-desc">车辆碰撞</text>
+        </view>
+        <view class="type-item other" bindtap="triggerEmergency" data-type="other">
+          <view class="type-icon-wrap">
+            <text class="type-emoji">❗</text>
+          </view>
+          <text class="type-name">其他事故</text>
+          <text class="type-desc">其他紧急情况</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 紧急联系人 -->
+    <view class="section-card">
+      <view class="section-header">
+        <text class="section-icon">📞</text>
+        <text class="section-title">紧急联系人</text>
+      </view>
+      <view class="contact-list">
+        <view class="contact-item" wx:for="{{emergencyContacts}}" wx:key="phone" bindtap="callContact" data-index="{{index}}">
+          <view class="contact-avatar">
+            <text>{{item.name[0]}}</text>
+          </view>
+          <view class="contact-info">
+            <text class="contact-name">{{item.name}}</text>
+            <text class="contact-phone">{{item.phone}}</text>
+          </view>
+          <view class="call-btn">
+            <text>📱 呼叫</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 温馨提示 -->
+    <view class="tips-card">
+      <view class="tips-header">
+        <text class="tips-icon">💡</text>
+        <text class="tips-title">温馨提示</text>
+      </view>
+      <view class="tips-content">
+        <text class="tip-item">1. 发生事故时请保持冷静，确保自身安全</text>
+        <text class="tip-item">2. 立即撤离危险区域，通知周围人员</text>
+        <text class="tip-item">3. 选择事故类型后系统将自动上报位置信息</text>
+        <text class="tip-item">4. 等待救援时请保持通讯畅通</text>
+      </view>
+    </view>
+
+    <!-- 一键报警 -->
+    <button class="emergency-btn" bindtap="callPolice">
+      <text class="btn-icon">🚨</text>
+      <text class="btn-text">一键报警 110</text>
+    </button>
+  </view>
+</view>

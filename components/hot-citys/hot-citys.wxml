@@ -1,0 +1,13 @@
+<view class="custom-class">
+  <text class="cs-city-title">热门城市</text>
+  <view bindtap="onTapHotCity" class="cs-citys-wrapper">
+    <view
+      class="{{'cs-'+mode+'-city '+(item.id===activeId?'cs-active-city':'')}} cs-city-label"
+      data-city-info="{{item}}"
+      wx:for="{{list}}"
+      wx:key="index"
+    >
+      {{item.name}}
+    </view>
+  </view>
+</view>

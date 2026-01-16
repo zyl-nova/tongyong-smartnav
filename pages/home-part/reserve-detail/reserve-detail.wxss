@@ -1,0 +1,191 @@
+/* 页面容器 */
+.container {
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* 加载状态 */
+.loading-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 200rpx;
+}
+
+.loading-icon {
+  font-size: 80rpx;
+  margin-bottom: 24rpx;
+}
+
+.loading-text {
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 状态头部 */
+.status-header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 60rpx 40rpx 100rpx;
+}
+
+.status-header.approved {
+  background: linear-gradient(135deg, #52c41a 0%, #73d13d 100%);
+}
+
+.status-header.pending {
+  background: linear-gradient(135deg, #faad14 0%, #ffc53d 100%);
+}
+
+.status-header.rejected {
+  background: linear-gradient(135deg, #f5222d 0%, #ff4d4f 100%);
+}
+
+.status-icon {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  font-size: 48rpx;
+  height: 100rpx;
+  justify-content: center;
+  margin-bottom: 20rpx;
+  width: 100rpx;
+}
+
+.status-text {
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+
+.status-hint {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 26rpx;
+}
+
+/* 内容区域 */
+.content-area {
+  margin-top: -60rpx;
+  padding: 0 24rpx 40rpx;
+}
+
+/* 信息卡片 */
+.info-card {
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 24rpx;
+  padding: 28rpx;
+}
+
+.card-header {
+  align-items: center;
+  border-bottom: 1rpx solid #f5f5f5;
+  display: flex;
+  margin-bottom: 24rpx;
+  padding-bottom: 20rpx;
+}
+
+.card-icon {
+  font-size: 32rpx;
+  margin-right: 12rpx;
+}
+
+.card-title {
+  color: #333;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+/* 信息列表 */
+.info-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-item {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 16rpx 0;
+}
+
+.info-item.column {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.info-label {
+  color: #999;
+  font-size: 26rpx;
+}
+
+.info-value {
+  color: #333;
+  font-size: 28rpx;
+  text-align: right;
+}
+
+.info-value.route {
+  color: #1890ff;
+  font-weight: 500;
+}
+
+.info-value.plate {
+  background: #f0f0f0;
+  border-radius: 6rpx;
+  font-weight: 500;
+  padding: 4rpx 12rpx;
+}
+
+.info-value.phone {
+  color: #1890ff;
+}
+
+.info-value.danger {
+  background: linear-gradient(135deg, #fff1f0 0%, #ffccc7 100%);
+  border: 1rpx solid #ffa39e;
+  border-radius: 6rpx;
+  color: #f5222d;
+  font-size: 24rpx;
+  padding: 4rpx 12rpx;
+}
+
+.info-value.highlight {
+  color: #1890ff;
+  font-weight: 500;
+}
+
+.info-value.remark {
+  background: #f8f9fa;
+  border-radius: 8rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-top: 12rpx;
+  padding: 16rpx;
+  text-align: left;
+  width: 100%;
+}
+
+/* 取消按钮 */
+.cancel-btn {
+  align-items: center;
+  background: #fff;
+  border: 2rpx solid #f5222d;
+  border-radius: 44rpx;
+  color: #f5222d;
+  display: flex;
+  font-size: 30rpx;
+  height: 88rpx;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+
+.cancel-btn::after {
+  border: none;
+}

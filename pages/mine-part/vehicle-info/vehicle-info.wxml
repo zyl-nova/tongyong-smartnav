@@ -1,0 +1,96 @@
+<!--pages/mine-part/vehicle-info/vehicle-info.wxml-->
+<view class="container">
+  <!-- 顶部车辆卡片 -->
+  <view class="header-bg">
+    <view class="vehicle-main-card">
+      <view class="plate-number">{{vehicle.licensePlate || '未绑定'}}</view>
+      <view class="vehicle-type-tag">{{vehicle.type || '危险品运输车'}}</view>
+    </view>
+  </view>
+
+  <view class="content-area">
+    <!-- 基本信息 -->
+    <view class="info-card">
+      <view class="card-header">
+        <text class="card-icon">🚛</text>
+        <text class="card-title">基本信息</text>
+      </view>
+      <view class="info-list">
+        <view class="info-item">
+          <text class="info-label">所属公司</text>
+          <text class="info-value">{{vehicle.company || '-'}}</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">车辆品牌</text>
+          <text class="info-value">{{vehicle.brand || '-'}}</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">车辆型号</text>
+          <text class="info-value">{{vehicle.model || '-'}}</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">核定载重</text>
+          <text class="info-value">{{vehicle.load ? vehicle.load + '吨' : '-'}}</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">车身颜色</text>
+          <view class="color-value" wx:if="{{vehicle.color}}">
+            <view class="color-dot" style="background: {{vehicle.colorCode || '#999'}}"></view>
+            <text>{{vehicle.color}}</text>
+          </view>
+          <text class="info-value" wx:else>-</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 检验信息 -->
+    <view class="info-card">
+      <view class="card-header">
+        <text class="card-icon">📋</text>
+        <text class="card-title">检验信息</text>
+      </view>
+      <view class="info-list">
+        <view class="info-item">
+          <text class="info-label">上次年检</text>
+          <text class="info-value">{{vehicle.lastInspection || '-'}}</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">下次年检</text>
+          <text class="info-value {{vehicle.inspectionWarning ? 'warning' : ''}}">
+            {{vehicle.nextInspection || '-'}}
+          </text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">保险到期</text>
+          <text class="info-value {{vehicle.insuranceWarning ? 'warning' : ''}}">
+            {{vehicle.insuranceExpiry || '-'}}
+          </text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 危险品信息 -->
+    <view class="info-card">
+      <view class="card-header">
+        <text class="card-icon">⚠️</text>
+        <text class="card-title">危险品信息</text>
+      </view>
+      <view class="info-list">
+        <view class="info-item">
+          <text class="info-label">许可类型</text>
+          <view class="danger-tag" wx:if="{{vehicle.dangerousType}}">{{vehicle.dangerousType}}</view>
+          <text class="info-value" wx:else>-</text>
+        </view>
+        <view class="info-item">
+          <text class="info-label">资质证书</text>
+          <text class="info-value link">{{vehicle.certificate || '点击上传'}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 更新按钮 -->
+    <button class="update-btn" bindtap="updateInfo">
+      更新车辆信息
+    </button>
+  </view>
+</view>

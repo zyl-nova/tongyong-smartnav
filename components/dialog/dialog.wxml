@@ -1,0 +1,13 @@
+<!--components/dialog/dialog.wxml-->
+<view class="dialog-mask" wx:if="{{show}}" bindtap="onClose">
+  <view class="dialog-container" catchtap="">
+    <view class="dialog-title" wx:if="{{title}}">{{title}}</view>
+    <view class="dialog-content">
+      <slot></slot>
+    </view>
+    <view class="dialog-footer">
+      <view class="dialog-btn cancel" wx:if="{{showCancel}}" bindtap="onCancel">{{cancelText}}</view>
+      <view class="dialog-btn confirm" bindtap="onConfirm">{{confirmText}}</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,90 @@
+<!--pages/mine-part/settings/settings.wxml-->
+<view class="container">
+  <!-- 顶部背景 -->
+  <view class="header-bg">
+    <view class="header-content">
+      <text class="header-title">设置</text>
+      <text class="header-subtitle">管理您的账号与应用设置</text>
+    </view>
+  </view>
+
+  <view class="content-area">
+    <!-- 账户安全 -->
+    <view class="settings-card">
+      <view class="card-header">
+        <text class="card-icon">👤</text>
+        <text class="card-title">账户安全</text>
+      </view>
+      <view class="settings-item" bindtap="navigateTo" data-url="/pages/mine-part/certification/certification">
+        <view class="item-left">
+          <view class="item-icon account">🔐</view>
+          <text class="item-text">账号与安全</text>
+        </view>
+        <text class="item-arrow">></text>
+      </view>
+    </view>
+
+    <!-- 通用设置 -->
+    <view class="settings-card">
+      <view class="card-header">
+        <text class="card-icon">⚙️</text>
+        <text class="card-title">通用设置</text>
+      </view>
+      <view class="settings-item" bindtap="navigateTo" data-url="/pages/mine-part/notification/notification">
+        <view class="item-left">
+          <view class="item-icon notification">🔔</view>
+          <text class="item-text">消息通知</text>
+        </view>
+        <text class="item-arrow">></text>
+      </view>
+      <view class="settings-item" bindtap="navigateTo" data-url="/pages/mine-part/privacy/privacy">
+        <view class="item-left">
+          <view class="item-icon privacy">🛡️</view>
+          <text class="item-text">隐私设置</text>
+        </view>
+        <text class="item-arrow">></text>
+      </view>
+      <view class="settings-item" bindtap="navigateTo" data-url="/pages/home-part/emergency/emergency">
+        <view class="item-left">
+          <view class="item-icon emergency">📞</view>
+          <text class="item-text">紧急联系人</text>
+        </view>
+        <text class="item-arrow">></text>
+      </view>
+    </view>
+
+    <!-- 存储与更新 -->
+    <view class="settings-card">
+      <view class="card-header">
+        <text class="card-icon">📦</text>
+        <text class="card-title">存储与更新</text>
+      </view>
+      <view class="settings-item" bindtap="clearCache">
+        <view class="item-left">
+          <view class="item-icon cache">🗑️</view>
+          <text class="item-text">清除缓存</text>
+        </view>
+        <text class="item-value">{{cacheSize || '0KB'}}</text>
+      </view>
+      <view class="settings-item" bindtap="checkUpdate">
+        <view class="item-left">
+          <view class="item-icon update">🔄</view>
+          <text class="item-text">检查更新</text>
+        </view>
+        <text class="item-value">v{{version || '1.0.0'}}</text>
+      </view>
+      <view class="settings-item" bindtap="navigateTo" data-url="/pages/mine-part/about/about">
+        <view class="item-left">
+          <view class="item-icon about">ℹ️</view>
+          <text class="item-text">关于我们</text>
+        </view>
+        <text class="item-arrow">></text>
+      </view>
+    </view>
+
+    <!-- 退出登录 -->
+    <button class="logout-btn" bindtap="showLogoutDialog">
+      退出登录
+    </button>
+  </view>
+</view>

@@ -1,0 +1,31 @@
+<!--pages/mine-part/list/list.wxml-->
+<view class="container">
+  <view class="tab-bar">
+    <view class="tab {{currentTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-tab="0">全部</view>
+    <view class="tab {{currentTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-tab="1">待审核</view>
+    <view class="tab {{currentTab === 2 ? 'active' : ''}}" bindtap="switchTab" data-tab="2">已通过</view>
+    <view class="tab {{currentTab === 3 ? 'active' : ''}}" bindtap="switchTab" data-tab="3">已拒绝</view>
+  </view>
+  
+  <scroll-view scroll-y class="appointment-list">
+    <view class="appointment-item" wx:for="{{appointments}}" wx:key="id" bindtap="viewAppointmentDetail" data-id="{{item.id}}">
+      <view class="item-header">
+        <text class="vehicle-plate">{{item.vehiclePlate}}</text>
+        <text class="status">{{item.status === 1 ? '待审核' : item.status === 2 ? '已通过' : item.status === 3 ? '已拒绝' : '已完成'}}</text>
+      </view>
+      <view class="item-route">
+        <text>{{item.startPoint}} → {{item.endPoint}}</text>
+      </view>
+      <view class="item-info">
+        <text>运输时间: {{item.transportTime}}</text>
+        <text>危险品类型: {{item.dangerousGoods}}</text>
+      </view>
+    </view>
+    
+    <view class="empty-state" wx:if="{{appointments.length === 0}}">
+      <text>暂无预约记录</text>
+    </view>
+  </scroll-view>
+  
+  <button class="add-btn" bindtap="createNewAppointment">新建预约</button>
+</view>

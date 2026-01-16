@@ -1,0 +1,393 @@
+/* 页面容器 */
+.container {
+  background: #f5f7fa;
+  min-height: 100vh;
+  padding: 0;
+}
+
+/* 顶部背景 */
+.header-bg {
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  padding: 40rpx 32rpx 120rpx;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-title {
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+
+.header-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 26rpx;
+}
+
+/* 内容区域 */
+.content-area {
+  margin-top: -80rpx;
+  padding: 0 24rpx 40rpx;
+}
+
+/* 快速预约卡片 */
+.quick-card {
+  align-items: center;
+  background: linear-gradient(135deg, #fff 0%, #f8fbff 100%);
+  border-radius: 20rpx;
+  box-shadow: 0 8rpx 32rpx rgba(24, 144, 255, 0.15);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+  padding: 28rpx;
+}
+
+.quick-card-left {
+  align-items: center;
+  display: flex;
+}
+
+.quick-card-icon {
+  align-items: center;
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  border-radius: 16rpx;
+  display: flex;
+  height: 80rpx;
+  justify-content: center;
+  margin-right: 20rpx;
+  width: 80rpx;
+}
+
+.icon-text {
+  font-size: 36rpx;
+}
+
+.quick-card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.quick-card-title {
+  color: #333;
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 4rpx;
+}
+
+.quick-card-desc {
+  color: #999;
+  font-size: 24rpx;
+}
+
+.quick-card-btn {
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  border-radius: 32rpx;
+  color: #fff;
+  font-size: 26rpx;
+  padding: 16rpx 32rpx;
+}
+
+/* 通用卡片区块 */
+.section-card {
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 24rpx;
+  padding: 28rpx;
+}
+
+.section-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+}
+
+.section-title-wrap {
+  align-items: center;
+  display: flex;
+}
+
+.title-dot {
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  border-radius: 4rpx;
+  height: 28rpx;
+  margin-right: 12rpx;
+  width: 6rpx;
+}
+
+.section-title {
+  color: #333;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.section-more {
+  color: #1890ff;
+  font-size: 24rpx;
+}
+
+/* 当前预约卡片 */
+.reservation-card {
+  background: linear-gradient(135deg, #f8fbff 0%, #f0f7ff 100%);
+  border: 1rpx solid #e6f4ff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+}
+
+.reservation-route {
+  align-items: center;
+  border-bottom: 1rpx dashed #d9e8f6;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.route-point-tag {
+  align-items: center;
+  border-radius: 50%;
+  display: flex;
+  font-size: 20rpx;
+  font-weight: 600;
+  height: 36rpx;
+  justify-content: center;
+  width: 36rpx;
+}
+
+.route-point-tag.start {
+  background: linear-gradient(135deg, #52c41a 0%, #73d13d 100%);
+  color: #fff;
+}
+
+.route-point-tag.end {
+  background: linear-gradient(135deg, #f5222d 0%, #ff4d4f 100%);
+  color: #fff;
+}
+
+.route-text {
+  color: #333;
+  font-size: 28rpx;
+  font-weight: 500;
+  margin: 0 12rpx;
+}
+
+.route-arrow-line {
+  background: linear-gradient(90deg, #52c41a, #1890ff, #f5222d);
+  height: 4rpx;
+  margin: 0 8rpx;
+  width: 40rpx;
+}
+
+.reservation-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.info-row {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-label {
+  color: #999;
+  font-size: 26rpx;
+}
+
+.info-value {
+  color: #333;
+  font-size: 26rpx;
+}
+
+.info-value.pending {
+  color: #faad14;
+}
+
+.info-value.plate {
+  background: #f0f0f0;
+  border-radius: 6rpx;
+  color: #333;
+  font-weight: 500;
+  padding: 4rpx 12rpx;
+}
+
+.status-tag {
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  padding: 6rpx 16rpx;
+}
+
+.status-tag.success {
+  background: linear-gradient(135deg, #f6ffed 0%, #d9f7be 100%);
+  border: 1rpx solid #b7eb8f;
+  color: #52c41a;
+}
+
+/* 快捷功能 */
+.quick-actions {
+  display: flex;
+  justify-content: space-around;
+  padding: 12rpx 0;
+}
+
+.action-item {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.action-icon-wrap {
+  align-items: center;
+  border-radius: 24rpx;
+  display: flex;
+  height: 96rpx;
+  justify-content: center;
+  margin-bottom: 12rpx;
+  width: 96rpx;
+}
+
+.action-icon-wrap.nav {
+  background: linear-gradient(135deg, #e6f7ff 0%, #bae7ff 100%);
+}
+
+.action-icon-wrap.photo {
+  background: linear-gradient(135deg, #fff7e6 0%, #ffe7ba 100%);
+}
+
+.action-icon-wrap.map {
+  background: linear-gradient(135deg, #f6ffed 0%, #d9f7be 100%);
+}
+
+.action-icon-wrap.emergency {
+  background: linear-gradient(135deg, #fff1f0 0%, #ffccc7 100%);
+}
+
+.action-icon {
+  height: 48rpx;
+  width: 48rpx;
+}
+
+.action-text {
+  color: #666;
+  font-size: 24rpx;
+}
+
+/* 紧急求助卡片 */
+.emergency-card {
+  align-items: center;
+  background: linear-gradient(135deg, #fff1f0 0%, #ffccc7 100%);
+  border: 1rpx solid #ffa39e;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+  padding: 24rpx 28rpx;
+}
+
+.emergency-left {
+  align-items: center;
+  display: flex;
+}
+
+.emergency-icon {
+  font-size: 40rpx;
+  margin-right: 16rpx;
+}
+
+.emergency-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.emergency-title {
+  color: #f5222d;
+  font-size: 28rpx;
+  font-weight: 600;
+  margin-bottom: 4rpx;
+}
+
+.emergency-desc {
+  color: #ff7875;
+  font-size: 22rpx;
+}
+
+.emergency-btn {
+  background: linear-gradient(135deg, #f5222d 0%, #ff4d4f 100%);
+  border-radius: 32rpx;
+  color: #fff;
+  font-size: 24rpx;
+  padding: 12rpx 28rpx;
+}
+
+/* 常用路线 */
+.route-scroll {
+  margin: 0 -28rpx;
+  padding: 0 28rpx;
+  white-space: nowrap;
+}
+
+.route-list {
+  display: inline-flex;
+  gap: 20rpx;
+  padding-right: 28rpx;
+}
+
+.route-item {
+  align-items: center;
+  background: linear-gradient(135deg, #fafafa 0%, #fff 100%);
+  border: 1rpx solid #f0f0f0;
+  border-radius: 16rpx;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 24rpx 20rpx;
+  width: 180rpx;
+}
+
+.route-item-icon {
+  align-items: center;
+  border-radius: 50%;
+  display: flex;
+  font-size: 32rpx;
+  height: 64rpx;
+  justify-content: center;
+  margin-bottom: 12rpx;
+  width: 64rpx;
+}
+
+.route-item-icon.chemical {
+  background: linear-gradient(135deg, #e6f7ff 0%, #bae7ff 100%);
+}
+
+.route-item-icon.gas {
+  background: linear-gradient(135deg, #fff7e6 0%, #ffe7ba 100%);
+}
+
+.route-item-icon.danger {
+  background: linear-gradient(135deg, #fff1f0 0%, #ffccc7 100%);
+}
+
+.route-item-icon.special {
+  background: linear-gradient(135deg, #f9f0ff 0%, #efdbff 100%);
+}
+
+.route-name {
+  color: #333;
+  font-size: 26rpx;
+  font-weight: 600;
+  margin-bottom: 6rpx;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.route-desc {
+  color: #999;
+  font-size: 22rpx;
+  text-align: center;
+  white-space: nowrap;
+}

@@ -1,0 +1,70 @@
+<view
+  bindtap="close"
+  catchtouchmove="emptyFunc"
+  class="cs-selector-mask {{show?'':'cs-selector-mask_hidden'}}"
+  hidden="{{!show}}"
+>
+  <view catchtap="emptyFunc" class="cs-selector-container">
+    <view class="cs-title-area">
+      <image
+        bindtap="onBack"
+        class="cs-title-icon {{isProvinceMode?'cs-hidden-icon':''}}"
+        src="../../assets/icon/icon_back.png"
+      ></image>
+      <text class="cs-title-text">选择城市</text>
+      <image
+        bindtap="close"
+        class="cs-title-icon"
+        src="../../assets/icon/icon_close.png"
+      ></image>
+    </view>
+    <view class="cs-tab-container">
+      <view
+        class="{{!isProvinceMode&&selectedProvince?'cs-selected-tab':'cs-unselected-tab'}} cs-tab-label"
+      >
+        {{selectedProvince?selectedProvince.name:'请选择'}}
+      </view>
+      <view class="cs-unselected-tab cs-tab-label" hidden="{{!isCityMode}}">
+        请选择
+      </view>
+    </view>
+    <view class="cs-divider-line"></view>
+    <view class="cs-loading-container" wx:if="{{isLoading}}">
+      <image
+        class="cs-loading-icon"
+        src="../../assets/icon/icon_loading.png"
+      ></image>
+      <text class="cs-loading-text">加载中</text>
+    </view>
+    <view class="cs-error-container" wx:elif="{{!isLoading&&isNoNetwork}}">
+      <image
+        class="cs-error-icon"
+        src="../../assets/img/no_network.png"
+      ></image>
+      <text class="cs-error-text">网络不可用</text>
+    </view>
+    <scroll-view
+      class="cs-scroll-container"
+      hidden="{{contentHidden}}"
+      scrollTop="{{topPosition}}"
+      scrollY="true"
+      wx:else
+    >
+      <view class="cs-list-container">
+        <hot-citys
+          activeId="{{selectedCity?selectedCity.id:''}}"
+          bind:select="onSelectHotCity"
+          customClass="cs-hotcity-container"
+          list="{{hotCityList}}"
+          mode="component"
+          wx:if="{{isProvinceMode}}"
+        ></hot-citys>
+        <list-component
+          bind:select="onSelect"
+          list="{{isProvinceMode?provinceList:currentCityList}}"
+          selectedId="{{selectedCity?selectedCity.id:''}}"
+        ></list-component>
+      </view>
+    </scroll-view>
+  </view>
+</view>

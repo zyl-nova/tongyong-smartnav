@@ -1,0 +1,40 @@
+<view class="cs-page-container" hidden="{{pageHidden}}">
+    <header bind:totalBarHeight="onGetTotalBarHeight" title="{{title}}"></header>
+    <view class="cs-search-container">
+        <image class="cs-search-icon" src="../../assets/icon/icon_search.png"></image>
+        <input bindinput="onInputChange" class="cs-search-input" placeholder="输入城市" placeholderClass="cs-search-input-placeholder" type="text"></input>
+    </view>
+    <view hidden="{{searchKeywords||isNoNetwork}}">
+        <view class="cs-position-contaienr" hidden="{{!locationCity}}">
+            <image class="cs-position-icon" src="{{positionIcon}}"></image>
+            <text class="cs-position-label">当前定位城市</text>
+            <text bindtap="onTapLocationCity" class="cs-position-text">{{locationCity.name}}</text>
+        </view>
+    </view>
+    <view class="cs-divider-line" hidden="{{searchKeywords&&!searchResultList.length||isNoNetwork||!locationCity}}"></view>
+    <view class="cs-sroll-area" hidden="{{isNoNetwork}}">
+        <scroll-view bindscroll="handleListScroll" class="cs-sroll-container" scrollIntoView="{{currentIndex}}" scrollY="true" wx:if="{{!searchKeywords}}">
+            <hot-citys bind:select="onTapHotCity" customClass="cs-hotcity-container {{showFirstLetterList?'':'cs-without-letter'}}" list="{{hotCityList}}"></hot-citys>
+            <view class="cs-city-list-container {{showFirstLetterList?'':'cs-without-letter'}}" wx:for="{{firstLetterList}}" wx:key="index">
+                <text class="cs-letter-text" id="{{item}}">{{item}}</text>
+                <list-component bindselect="onSelectCity" list="{{cityDataSet[item]}}"></list-component>
+            </view>
+        </scroll-view>
+        <scroll-view class="cs-sroll-container" scrollY="true" wx:else>
+            <view class="cs-search-result-container">
+                <list-component bindselect="onSelectCity" list="{{searchResultList}}"></list-component>
+            </view>
+            <view class="cs-error-container" hidden="{{searchResultList.length>0}}">
+                <image class="cs-error-icon" src="{{noResultIcon}}"></image>
+                <text class="cs-error-text">无相关结果</text>
+            </view>
+        </scroll-view>
+    </view>
+    <view catchtouchmove="handleMoveOnIndex" class="cs-letter-index-container" hidden="{{searchKeywords||isNoNetwork||!showFirstLetterList}}" style="top: {{totalBarHeight+120}}px;">
+        <view bindtap="onTapIndex" class="cs-letter-index" data-id="{{item}}" style="background-color: {{item===currentActiveLetter?'#E9E9E9':'#FFF'}}" wx:for="{{firstLetterList}}" wx:key="index"> {{item}} </view>
+    </view>
+    <view class="cs-error-container cs-no-network" hidden="{{!isNoNetwork}}">
+        <image class="cs-error-icon" src="../../assets/img/no_network.png"></image>
+        <text class="cs-error-text">网络不可用</text>
+    </view>
+</view>

@@ -1,0 +1,129 @@
+<!--pages/home-part/route/route.wxml-->
+<view class="container">
+  <!-- 预约路线详情模式 -->
+  <block wx:if="{{fromReservation}}">
+    <view class="header-bg">
+      <view class="header-content">
+        <text class="header-title">路线详情</text>
+        <text class="header-subtitle">{{reservationRoute.licensePlate}}</text>
+      </view>
+    </view>
+    <view class="content-area">
+      <view class="reservation-route-card">
+        <view class="route-detail-section">
+          <view class="route-point-item">
+            <view class="point-marker start">起</view>
+            <view class="point-content">
+              <text class="point-label">起点</text>
+              <text class="point-name">{{reservationRoute.startPoint}}</text>
+            </view>
+          </view>
+          <view class="route-line-vertical"></view>
+          <view class="route-point-item">
+            <view class="point-marker end">终</view>
+            <view class="point-content">
+              <text class="point-label">终点</text>
+              <text class="point-name">{{reservationRoute.endPoint}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="route-plan-section">
+          <text class="plan-title">规划路线</text>
+          <text class="plan-content">{{reservationRoute.plannedRoute || '暂无规划路线'}}</text>
+        </view>
+        <view class="route-actions">
+          <button class="action-btn-large primary" bindtap="startNavigation">
+            <text class="btn-icon">🧭</text>
+            <text>开始导航</text>
+          </button>
+          <button class="action-btn-large secondary" bindtap="viewOnMap">
+            <text class="btn-icon">🗺️</text>
+            <text>地图查看</text>
+          </button>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 路线列表模式 -->
+  <block wx:else>
+  <!-- 顶部背景 -->
+  <view class="header-bg">
+    <view class="header-content">
+      <text class="header-title">全部路线</text>
+      <text class="header-subtitle">选择适合的运输路线</text>
+    </view>
+    <!-- 搜索框 -->
+    <view class="search-box">
+      <view class="search-icon">🔍</view>
+      <input class="search-input" placeholder="搜索路线名称" value="{{searchValue}}" bindinput="onSearch" />
+      <view class="clear-btn" wx:if="{{searchValue}}" bindtap="onClearSearch">×</view>
+    </view>
+  </view>
+
+  <view class="content-area">
+    <!-- 分类Tab -->
+    <view class="tab-card">
+      <view class="tab-bar">
+        <view class="tab-item {{activeTab === 0 ? 'active' : ''}}" bindtap="onTabChange" data-index="0">
+          <text>全部</text>
+        </view>
+        <view class="tab-item {{activeTab === 1 ? 'active' : ''}}" bindtap="onTabChange" data-index="1">
+          <text>🧪 化学品</text>
+        </view>
+        <view class="tab-item {{activeTab === 2 ? 'active' : ''}}" bindtap="onTabChange" data-index="2">
+          <text>🔥 燃气</text>
+        </view>
+        <view class="tab-item {{activeTab === 3 ? 'active' : ''}}" bindtap="onTabChange" data-index="3">
+          <text>⚡ 特殊</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 路线列表 -->
+    <scroll-view scroll-y class="route-list">
+      <view class="route-card {{currentRouteId === item.id ? 'selected' : ''}}" 
+            wx:for="{{filteredRoutes}}" wx:key="id" 
+            bindtap="onRouteSelect" data-id="{{item.id}}">
+        <view class="route-left">
+          <view class="route-icon {{item.type || 'default'}}">
+            {{item.type === 'chemical' ? '🧪' : item.type === 'gas' ? '🔥' : item.type === 'special' ? '⚡' : '📍'}}
+          </view>
+          <view class="route-info">
+            <view class="route-name-row">
+              <text class="route-name">{{item.name}}</text>
+              <view class="current-tag" wx:if="{{currentRouteId === item.id}}">已选</view>
+            </view>
+            <text class="route-desc">{{item.desc}}</text>
+            <view class="route-tags">
+              <text class="route-tag distance">{{item.distance || '15km'}}</text>
+              <text class="route-tag time">{{item.time || '约30分钟'}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="route-right">
+          <button class="nav-btn" size="mini" catchtap="onNavigate" data-id="{{item.id}}">
+            导航
+          </button>
+        </view>
+      </view>
+      
+      <!-- 空状态 -->
+      <view class="empty-state" wx:if="{{filteredRoutes.length === 0}}">
+        <view class="empty-icon">🔍</view>
+        <text class="empty-text">没有匹配的路线</text>
+        <button class="reset-btn" size="mini" bindtap="onResetFilter">重置筛选</button>
+      </view>
+    </scroll-view>
+  </view>
+  
+  <!-- 底部确认栏 -->
+  <view class="bottom-bar" wx:if="{{currentRouteId}}">
+    <view class="selected-info">
+      <text class="selected-label">已选择</text>
+      <text class="selected-name">{{selectedRouteName}}</text>
+    </view>
+    <button class="confirm-btn" bindtap="onConfirmRoute">确认选择</button>
+  </view>
+  </block>
+</view>

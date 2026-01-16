@@ -1,0 +1,15 @@
+<view bindtap="onTapCity">
+  <view
+    class="cs-list-item {{item.id===selectedId?'cs-selected-item':''}}"
+    data-city-info="{{item}}"
+    wx:for="{{list}}"
+    wx:key="index"
+  >
+    <text>{{item.name}}</text>
+    <image
+      class="cs-selected-icon"
+      src="../../assets/icon/icon_check.png"
+      wx:if="{{item.id===selectedId}}"
+    ></image>
+  </view>
+</view>

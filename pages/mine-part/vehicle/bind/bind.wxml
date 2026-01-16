@@ -1,0 +1,32 @@
+<!--pages/mine-part/vehicle/bind/bind.wxml-->
+<view class="container">
+  <form bindsubmit="submitForm">
+    <view class="form-section">
+      <view class="form-item">
+        <text class="label">车牌号</text>
+        <input class="input" name="plateNumber" placeholder="请输入车牌号" value="{{formData.plateNumber}}" />
+      </view>
+      
+      <view class="form-item">
+        <text class="label">车辆类型</text>
+        <picker bindchange="typeChange" value="{{typeIndex}}" range="{{vehicleTypes}}">
+          <view class="picker">{{vehicleTypes[typeIndex]}}</view>
+        </picker>
+      </view>
+      
+      <view class="form-item">
+        <text class="label">核定载重(吨)</text>
+        <input class="input" name="load" type="digit" placeholder="请输入核定载重" value="{{formData.load}}" />
+      </view>
+      
+      <view class="form-item">
+        <text class="label">危险品类型</text>
+        <picker bindchange="dangerousChange" value="{{dangerousIndex}}" range="{{dangerousTypes}}">
+          <view class="picker">{{dangerousTypes[dangerousIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+    
+    <button class="submit-btn" form-type="submit">{{mode === 'edit' ? '更新车辆' : '绑定车辆'}}</button>
+  </form>
+</view>

@@ -1,0 +1,98 @@
+<!--pages/mine/mine.wxml-->
+<view class="container">
+  <!-- 顶部用户卡片 -->
+  <view class="header-bg">
+    <view class="user-card">
+      <view class="avatar-wrap">
+        <image class="avatar" src="/images/hu/default-avatar.png" mode="aspectFill"/>
+        <view class="avatar-badge" wx:if="{{userInfo.certified}}">✓</view>
+      </view>
+      <view class="user-info">
+        <view class="user-name-row">
+          <text class="username">{{userInfo.nickName || '未登录'}}</text>
+          <view class="cert-tag {{userInfo.certified ? 'certified' : ''}}" bindtap="{{!userInfo.certified ? 'navigateToCertify' : ''}}">
+            {{userInfo.certified ? '已认证' : '去认证'}}
+          </view>
+        </view>
+        <text class="phone">{{userInfo.phone || '点击登录账号'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="content-area">
+    <!-- 我的车辆 -->
+    <view class="vehicle-card" bindtap="navigateToVehicleManage">
+      <view class="vehicle-left">
+        <view class="vehicle-icon-wrap">
+          <image class="vehicle-icon" src="/images/mine/AAA/truck-icon.png"/>
+        </view>
+        <view class="vehicle-info">
+          <text class="vehicle-plate">{{vehicleInfo.plateNumber || '暂无车辆'}}</text>
+          <text class="vehicle-type">{{vehicleInfo.type}} {{vehicleInfo.load}}</text>
+        </view>
+      </view>
+      <view class="vehicle-right">
+        <text class="vehicle-manage">管理</text>
+        <text class="vehicle-arrow">></text>
+      </view>
+    </view>
+
+    <!-- 快捷功能 -->
+    <view class="quick-card">
+      <view class="quick-item" bindtap="navigateToMyAppointments">
+        <view class="quick-icon-wrap appointment">
+          <image class="quick-icon" src="/images/mine/AAA/appointment-icon.png"/>
+        </view>
+        <text class="quick-text">我的预约</text>
+      </view>
+      <view class="quick-item" bindtap="navigateToViolations">
+        <view class="quick-icon-wrap violation">
+          <image class="quick-icon" src="/images/mine/AAA/violation-icon.png"/>
+        </view>
+        <text class="quick-text">违规记录</text>
+      </view>
+      <view class="quick-item" bindtap="navigateToVehicleinfo">
+        <view class="quick-icon-wrap info">
+          <image class="quick-icon" src="/images/mine/AAA/vehicle-info.png"/>
+        </view>
+        <text class="quick-text">车辆信息</text>
+      </view>
+      <view class="quick-item" bindtap="navigateToRouteHistory">
+        <view class="quick-icon-wrap history">
+          <image class="quick-icon" src="/images/mine/AAA/history-icon.png"/>
+        </view>
+        <text class="quick-text">历史路线</text>
+      </view>
+    </view>
+
+    <!-- 菜单列表 -->
+    <view class="menu-card">
+      <view class="menu-item" bindtap="navigateToSettings">
+        <view class="menu-left">
+          <view class="menu-icon-wrap">⚙️</view>
+          <text class="menu-text">设置</text>
+        </view>
+        <text class="menu-arrow">></text>
+      </view>
+      <view class="menu-item" bindtap="navigateToFeedback">
+        <view class="menu-left">
+          <view class="menu-icon-wrap">💬</view>
+          <text class="menu-text">意见反馈</text>
+        </view>
+        <text class="menu-arrow">></text>
+      </view>
+      <view class="menu-item" bindtap="navigateToAbout">
+        <view class="menu-left">
+          <view class="menu-icon-wrap">ℹ️</view>
+          <text class="menu-text">关于我们</text>
+        </view>
+        <text class="menu-arrow">></text>
+      </view>
+    </view>
+
+    <!-- 退出登录 -->
+    <view class="logout-btn" bindtap="showLogoutDialog">
+      <text>退出登录</text>
+    </view>
+  </view>
+</view>

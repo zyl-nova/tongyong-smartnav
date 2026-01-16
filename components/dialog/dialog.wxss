@@ -1,0 +1,128 @@
+.dialog-container {
+  align-items: center;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  z-index: 999;
+}
+.dialog-container,
+.mask {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.mask {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+}
+.dialog-box {
+  animation: fadeIn 0.3s;
+  background-color: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.2);
+  max-width: 600rpx;
+  overflow: hidden;
+  position: relative;
+  width: 80%;
+}
+.dialog-box.warning {
+  border-top: 8rpx solid #ffa000;
+}
+.dialog-box.error {
+  border-top: 8rpx solid #f44336;
+}
+.dialog-box.success {
+  border-top: 8rpx solid #4caf50;
+}
+.dialog-header {
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx;
+}
+.dialog-title {
+  color: #333;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+.close-icon {
+  height: 36rpx;
+  width: 36rpx;
+}
+.dialog-content {
+  padding: 40rpx 30rpx;
+  text-align: center;
+}
+.dialog-image {
+  height: 120rpx;
+  margin-bottom: 30rpx;
+  width: 120rpx;
+}
+.dialog-message {
+  color: #666;
+  font-size: 30rpx;
+  line-height: 1.6;
+}
+.dialog-footer {
+  border-top: 1rpx solid #eee;
+  display: -webkit-flex;
+  display: flex;
+}
+.dialog-btn {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  flex: 1;
+  font-size: 32rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  margin: 0;
+  position: relative;
+}
+.dialog-btn::after {
+  border: none;
+}
+.cancel-btn {
+  border-right: 1rpx solid #eee;
+  color: #666;
+}
+.confirm-btn {
+  color: #1a73e8;
+  font-weight: 700;
+}
+.warning-btn {
+  color: #ffa000;
+}
+.error-btn {
+  color: #f44336;
+}
+.success-btn {
+  color: #4caf50;
+}
+.btn-hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

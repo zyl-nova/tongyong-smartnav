@@ -1,0 +1,62 @@
+<!--pages/mine-part/privacy/privacy.wxml-->
+<view class="container">
+  <view class="settings-card">
+    <view class="card-header">
+      <text class="card-title">隐私保护</text>
+    </view>
+    <view class="settings-item">
+      <view class="item-left">
+        <text class="item-text">位置信息</text>
+        <text class="item-desc">允许应用获取您的位置信息</text>
+      </view>
+      <switch checked="{{locationEnabled}}" bindchange="onLocationChange" color="#1a73e8" />
+    </view>
+    <view class="settings-item no-border">
+      <view class="item-left">
+        <text class="item-text">个性化推荐</text>
+        <text class="item-desc">基于您的使用习惯推荐内容</text>
+      </view>
+      <switch checked="{{personalizedEnabled}}" bindchange="onPersonalizedChange" color="#1a73e8" />
+    </view>
+  </view>
+
+  <view class="settings-card">
+    <view class="card-header">
+      <text class="card-title">数据管理</text>
+    </view>
+    <view class="settings-item" bindtap="viewPrivacyPolicy">
+      <view class="item-left">
+        <text class="item-text">隐私政策</text>
+        <text class="item-desc">查看我们的隐私保护政策</text>
+      </view>
+      <text class="item-arrow">></text>
+    </view>
+    <view class="settings-item" bindtap="viewUserAgreement">
+      <view class="item-left">
+        <text class="item-text">用户协议</text>
+        <text class="item-desc">查看用户服务协议</text>
+      </view>
+      <text class="item-arrow">></text>
+    </view>
+    <view class="settings-item no-border" bindtap="requestDataExport">
+      <view class="item-left">
+        <text class="item-text">数据导出</text>
+        <text class="item-desc">导出您的个人数据</text>
+      </view>
+      <text class="item-arrow">></text>
+    </view>
+  </view>
+
+  <view class="settings-card">
+    <view class="card-header">
+      <text class="card-title">账号安全</text>
+    </view>
+    <view class="settings-item no-border danger" bindtap="deleteAccount">
+      <view class="item-left">
+        <text class="item-text danger-text">注销账号</text>
+        <text class="item-desc">永久删除您的账号和数据</text>
+      </view>
+      <text class="item-arrow">></text>
+    </view>
+  </view>
+</view>

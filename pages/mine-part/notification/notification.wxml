@@ -1,0 +1,53 @@
+<!--pages/mine-part/notification/notification.wxml-->
+<view class="container">
+  <view class="settings-card">
+    <view class="card-header">
+      <text class="card-title">消息推送</text>
+    </view>
+    <view class="settings-item">
+      <view class="item-left">
+        <text class="item-text">系统通知</text>
+        <text class="item-desc">接收系统公告和更新提醒</text>
+      </view>
+      <switch checked="{{systemNotify}}" bindchange="onSystemNotifyChange" color="#1a73e8" />
+    </view>
+    <view class="settings-item">
+      <view class="item-left">
+        <text class="item-text">订单通知</text>
+        <text class="item-desc">接收订单状态变更提醒</text>
+      </view>
+      <switch checked="{{orderNotify}}" bindchange="onOrderNotifyChange" color="#1a73e8" />
+    </view>
+    <view class="settings-item no-border">
+      <view class="item-left">
+        <text class="item-text">活动推送</text>
+        <text class="item-desc">接收优惠活动和促销信息</text>
+      </view>
+      <switch checked="{{activityNotify}}" bindchange="onActivityNotifyChange" color="#1a73e8" />
+    </view>
+  </view>
+
+  <view class="settings-card">
+    <view class="card-header">
+      <text class="card-title">提醒设置</text>
+    </view>
+    <view class="settings-item">
+      <view class="item-left">
+        <text class="item-text">声音提醒</text>
+        <text class="item-desc">收到消息时播放提示音</text>
+      </view>
+      <switch checked="{{soundEnabled}}" bindchange="onSoundChange" color="#1a73e8" />
+    </view>
+    <view class="settings-item no-border">
+      <view class="item-left">
+        <text class="item-text">震动提醒</text>
+        <text class="item-desc">收到消息时震动提醒</text>
+      </view>
+      <switch checked="{{vibrationEnabled}}" bindchange="onVibrationChange" color="#1a73e8" />
+    </view>
+  </view>
+
+  <view class="tips">
+    <text>开启消息通知，及时获取重要信息</text>
+  </view>
+</view>

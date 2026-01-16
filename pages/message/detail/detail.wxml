@@ -1,0 +1,11 @@
+<!--pages/message/detail/detail.wxml-->
+<view class="detail-container">
+  <view class="detail-header">
+    <text class="detail-type">{{detail.type}}</text>
+    <text class="detail-time">{{detail.time}}</text>
+  </view>
+  <view class="detail-content">
+    <text class="detail-title">{{detail.title}}</text>
+    <text class="detail-text">{{detail.content}}</text>
+  </view>
+</view>

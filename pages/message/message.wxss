@@ -1,0 +1,220 @@
+/* 页面容器 */
+.container {
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* 顶部背景 */
+.header-bg {
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  padding: 40rpx 32rpx 100rpx;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-title {
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+
+.header-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 26rpx;
+}
+
+/* 内容区域 */
+.content-area {
+  margin-top: -60rpx;
+  padding: 0 24rpx 40rpx;
+}
+
+/* 消息分类Tab */
+.message-tabs {
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  display: flex;
+  margin-bottom: 24rpx;
+  padding: 8rpx;
+}
+
+.tab-item {
+  align-items: center;
+  border-radius: 16rpx;
+  color: #666;
+  display: flex;
+  flex: 1;
+  font-size: 28rpx;
+  justify-content: center;
+  padding: 20rpx 0;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.tab-item.active {
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  color: #fff;
+  font-weight: 500;
+}
+
+.tab-badge {
+  align-items: center;
+  background: #f5222d;
+  border-radius: 16rpx;
+  color: #fff;
+  display: flex;
+  font-size: 20rpx;
+  height: 32rpx;
+  justify-content: center;
+  margin-left: 8rpx;
+  min-width: 32rpx;
+  padding: 0 8rpx;
+}
+
+/* 消息列表 */
+.message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.message-card {
+  align-items: center;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  display: flex;
+  padding: 28rpx;
+  transition: all 0.3s;
+}
+
+.message-card.unread {
+  background: linear-gradient(135deg, #fff 0%, #f0f7ff 100%);
+  border-left: 6rpx solid #1890ff;
+}
+
+.message-card:active {
+  transform: scale(0.98);
+}
+
+.message-icon-wrap {
+  align-items: center;
+  background: linear-gradient(135deg, #e6f7ff 0%, #bae7ff 100%);
+  border-radius: 20rpx;
+  display: flex;
+  flex-shrink: 0;
+  height: 88rpx;
+  justify-content: center;
+  margin-right: 24rpx;
+  position: relative;
+  width: 88rpx;
+}
+
+.message-icon-wrap.system {
+  background: linear-gradient(135deg, #fff7e6 0%, #ffe7ba 100%);
+}
+
+.message-icon-wrap.reservation {
+  background: linear-gradient(135deg, #f6ffed 0%, #d9f7be 100%);
+}
+
+.message-icon-wrap.success {
+  background: linear-gradient(135deg, #f6ffed 0%, #d9f7be 100%);
+}
+
+.message-icon-wrap.warning {
+  background: linear-gradient(135deg, #fff1f0 0%, #ffccc7 100%);
+}
+
+.message-icon-wrap.remind {
+  background: linear-gradient(135deg, #fff7e6 0%, #ffe7ba 100%);
+}
+
+.message-icon-wrap.activity {
+  background: linear-gradient(135deg, #f9f0ff 0%, #efdbff 100%);
+}
+
+.message-icon {
+  height: 44rpx;
+  width: 44rpx;
+}
+
+.unread-dot {
+  background: linear-gradient(135deg, #f5222d 0%, #ff4d4f 100%);
+  border: 4rpx solid #fff;
+  border-radius: 50%;
+  height: 20rpx;
+  position: absolute;
+  right: -4rpx;
+  top: -4rpx;
+  width: 20rpx;
+}
+
+.message-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.message-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8rpx;
+}
+
+.message-title {
+  color: #333;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.message-time {
+  color: #999;
+  font-size: 24rpx;
+}
+
+.message-desc {
+  color: #666;
+  display: block;
+  font-size: 26rpx;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.message-arrow {
+  color: #ccc;
+  font-size: 28rpx;
+  margin-left: 16rpx;
+}
+
+/* 空状态 */
+.empty-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-top: 120rpx;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 32rpx;
+}
+
+.empty-text {
+  color: #333;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-bottom: 12rpx;
+}
+
+.empty-hint {
+  color: #999;
+  font-size: 26rpx;
+}

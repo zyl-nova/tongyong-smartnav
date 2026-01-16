@@ -1,0 +1,91 @@
+<!--pages/mine-part/feedback/feedback.wxml-->
+<view class="container">
+  <!-- 顶部背景 -->
+  <view class="header-bg">
+    <view class="header-content">
+      <text class="header-title">意见反馈</text>
+      <text class="header-subtitle">您的建议是我们进步的动力</text>
+    </view>
+  </view>
+
+  <view class="content-area">
+    <!-- 问题类型 -->
+    <view class="form-card">
+      <view class="card-header">
+        <text class="card-icon">📋</text>
+        <text class="card-title">问题类型</text>
+      </view>
+      <picker class="type-picker" bindchange="changeType" value="{{typeIndex}}" range="{{feedbackTypes}}" range-key="name">
+        <view class="picker-box">
+          <text class="picker-text {{typeIndex >= 0 ? '' : 'placeholder'}}">
+            {{typeIndex >= 0 ? feedbackTypes[typeIndex].name : '请选择问题类型'}}
+          </text>
+          <text class="picker-arrow">▼</text>
+        </view>
+      </picker>
+    </view>
+
+    <!-- 问题描述 -->
+    <view class="form-card">
+      <view class="card-header">
+        <text class="card-icon">✏️</text>
+        <text class="card-title">问题描述</text>
+      </view>
+      <view class="textarea-wrap">
+        <textarea 
+          class="content-textarea" 
+          placeholder="请详细描述您遇到的问题或建议..." 
+          value="{{content}}" 
+          bindinput="inputContent"
+          maxlength="500" 
+        />
+        <text class="char-count">{{content.length || 0}}/500</text>
+      </view>
+    </view>
+
+    <!-- 图片上传 -->
+    <view class="form-card">
+      <view class="card-header">
+        <text class="card-icon">📷</text>
+        <text class="card-title">上传图片</text>
+        <text class="card-hint">（选填，最多3张）</text>
+      </view>
+      <view class="image-grid">
+        <view class="image-item" wx:for="{{images}}" wx:key="index">
+          <image class="uploaded-image" src="{{item.path || item}}" mode="aspectFill" />
+          <view class="delete-btn" bindtap="deleteImage" data-index="{{index}}">×</view>
+        </view>
+        <view class="add-image" wx:if="{{images.length < 3}}" bindtap="chooseImage">
+          <text class="add-icon">+</text>
+          <text class="add-text">添加图片</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 联系方式 -->
+    <view class="form-card">
+      <view class="card-header">
+        <text class="card-icon">📱</text>
+        <text class="card-title">联系方式</text>
+        <text class="card-hint">（选填）</text>
+      </view>
+      <input 
+        class="contact-input" 
+        placeholder="请输入手机号或邮箱，方便我们联系您" 
+        value="{{contact}}" 
+        bindinput="inputContact"
+      />
+    </view>
+
+    <!-- 提交按钮 -->
+    <button class="submit-btn" bindtap="submitFeedback">
+      提交反馈
+    </button>
+
+    <!-- 底部提示 -->
+    <view class="footer-tips">
+      <text>我们会认真对待每一条反馈</text>
+      <text>并在1-3个工作日内给您回复</text>
+    </view>
+  </view>
+</view>

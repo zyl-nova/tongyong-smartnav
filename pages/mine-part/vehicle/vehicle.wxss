@@ -1,0 +1,275 @@
+/* 页面容器 */
+.container {
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* 顶部背景 */
+.header-bg {
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  padding: 40rpx 32rpx 100rpx;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-title {
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+
+.header-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 26rpx;
+}
+
+/* 内容区域 */
+.content-area {
+  margin-top: -60rpx;
+  padding: 0 24rpx 40rpx;
+}
+
+/* 当前车辆卡片 */
+.current-vehicle-card {
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+  margin-bottom: 24rpx;
+  overflow: hidden;
+}
+
+.card-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 24rpx;
+}
+
+.header-left {
+  align-items: center;
+  display: flex;
+}
+
+.card-icon {
+  font-size: 28rpx;
+  margin-right: 10rpx;
+}
+
+.card-title {
+  color: #333;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.edit-btn {
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  border-radius: 20rpx;
+  color: #fff;
+  font-size: 24rpx;
+  padding: 8rpx 20rpx;
+}
+
+.history-count {
+  color: #999;
+  font-size: 24rpx;
+}
+
+/* 车辆展示区 */
+.vehicle-display {
+  align-items: center;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx 24rpx;
+}
+
+.vehicle-image {
+  height: 200rpx;
+  margin-bottom: 24rpx;
+  width: 280rpx;
+}
+
+.plate-number-large {
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  border-radius: 12rpx;
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: 600;
+  letter-spacing: 4rpx;
+  margin-bottom: 20rpx;
+  padding: 12rpx 32rpx;
+}
+
+.vehicle-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  justify-content: center;
+}
+
+.vehicle-tag {
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  padding: 8rpx 20rpx;
+}
+
+.vehicle-tag.type {
+  background: linear-gradient(135deg, #e6f7ff 0%, #bae7ff 100%);
+  color: #1890ff;
+}
+
+.vehicle-tag.load {
+  background: linear-gradient(135deg, #f6ffed 0%, #d9f7be 100%);
+  color: #52c41a;
+}
+
+.vehicle-tag.danger {
+  background: linear-gradient(135deg, #fff1f0 0%, #ffccc7 100%);
+  color: #f5222d;
+}
+
+/* 空状态卡片 */
+.empty-card {
+  align-items: center;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24rpx;
+  padding: 60rpx 24rpx;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+  opacity: 0.5;
+}
+
+.empty-text {
+  color: #333;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+}
+
+.empty-hint {
+  color: #999;
+  font-size: 26rpx;
+  margin-bottom: 32rpx;
+}
+
+.bind-btn-primary {
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  border-radius: 44rpx;
+  color: #fff;
+  font-size: 30rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  width: 300rpx;
+}
+
+.bind-btn-primary::after {
+  border: none;
+}
+
+/* 历史车辆卡片 */
+.history-card {
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 24rpx;
+}
+
+.history-list {
+  padding: 0 24rpx;
+}
+
+.history-item {
+  align-items: center;
+  border-bottom: 1rpx solid #f5f5f5;
+  display: flex;
+  padding: 24rpx 0;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-item:active {
+  background: #f8f9fa;
+}
+
+.history-icon-wrap {
+  align-items: center;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  border-radius: 12rpx;
+  display: flex;
+  font-size: 28rpx;
+  height: 60rpx;
+  justify-content: center;
+  margin-right: 20rpx;
+  width: 60rpx;
+}
+
+.history-info {
+  flex: 1;
+}
+
+.history-main {
+  align-items: center;
+  display: flex;
+  margin-bottom: 6rpx;
+}
+
+.history-plate {
+  color: #333;
+  font-size: 30rpx;
+  font-weight: 500;
+  margin-right: 16rpx;
+}
+
+.history-type {
+  background: #f5f5f5;
+  border-radius: 6rpx;
+  color: #666;
+  font-size: 22rpx;
+  padding: 4rpx 12rpx;
+}
+
+.history-time {
+  color: #999;
+  font-size: 24rpx;
+}
+
+.history-arrow {
+  color: #ccc;
+  font-size: 28rpx;
+}
+
+/* 绑定新车辆按钮 */
+.add-vehicle-btn {
+  align-items: center;
+  background: #fff;
+  border: 2rpx dashed #1890ff;
+  border-radius: 20rpx;
+  color: #1890ff;
+  display: flex;
+  font-size: 30rpx;
+  height: 100rpx;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+
+.add-vehicle-btn::after {
+  border: none;
+}
+
+.btn-icon {
+  font-size: 36rpx;
+  margin-right: 8rpx;
+}

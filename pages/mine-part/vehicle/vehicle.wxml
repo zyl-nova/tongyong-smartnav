@@ -1,0 +1,74 @@
+<!--pages/mine-part/vehicle/vehicle.wxml-->
+<view class="container">
+  <!-- 顶部背景 -->
+  <view class="header-bg">
+    <view class="header-content">
+      <text class="header-title">车辆管理</text>
+      <text class="header-subtitle">管理您的绑定车辆</text>
+    </view>
+  </view>
+
+  <view class="content-area">
+    <!-- 当前绑定车辆 -->
+    <view class="current-vehicle-card" wx:if="{{vehicle}}">
+      <view class="card-header">
+        <view class="header-left">
+          <text class="card-icon">🚛</text>
+          <text class="card-title">当前绑定车辆</text>
+        </view>
+        <view class="edit-btn" bindtap="editVehicle">
+          <text>编辑</text>
+        </view>
+      </view>
+      <view class="vehicle-display">
+        <image class="vehicle-image" src="/images/mine/vehicle/vehicle.png" mode="aspectFit" />
+        <view class="plate-number-large">{{vehicle.plateNumber}}</view>
+        <view class="vehicle-tags">
+          <view class="vehicle-tag type">{{vehicle.type}}</view>
+          <view class="vehicle-tag load">载重{{vehicle.load}}</view>
+          <view class="vehicle-tag danger">{{vehicle.dangerousType}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-card" wx:if="{{!vehicle}}">
+      <view class="empty-icon">🚛</view>
+      <text class="empty-text">您还未绑定车辆</text>
+      <text class="empty-hint">绑定车辆后可使用更多功能</text>
+      <button class="bind-btn-primary" bindtap="bindNewVehicle">立即绑定</button>
+    </view>
+
+    <!-- 历史绑定车辆 -->
+    <view class="history-card" wx:if="{{history.length > 0}}">
+      <view class="card-header">
+        <view class="header-left">
+          <text class="card-icon">📋</text>
+          <text class="card-title">历史绑定车辆</text>
+        </view>
+        <text class="history-count">{{history.length}}辆</text>
+      </view>
+      <view class="history-list">
+        <view class="history-item" wx:for="{{history}}" wx:key="plateNumber" bindtap="selectHistory" data-index="{{index}}">
+          <view class="history-icon-wrap">
+            <text>🚗</text>
+          </view>
+          <view class="history-info">
+            <view class="history-main">
+              <text class="history-plate">{{item.plateNumber}}</text>
+              <text class="history-type">{{item.type}}</text>
+            </view>
+            <text class="history-time">{{item.bindTime}}</text>
+          </view>
+          <text class="history-arrow">></text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 绑定新车辆按钮 -->
+    <button class="add-vehicle-btn" wx:if="{{vehicle}}" bindtap="bindNewVehicle">
+      <text class="btn-icon">+</text>
+      <text>绑定新车辆</text>
+    </button>
+  </view>
+</view>

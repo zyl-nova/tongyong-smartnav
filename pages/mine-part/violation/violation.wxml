@@ -1,0 +1,91 @@
+<!--pages/mine-part/violation/violation.wxml-->
+<view class="container">
+  <!-- 顶部背景 -->
+  <view class="header-bg">
+    <view class="header-content">
+      <text class="header-title">违规记录</text>
+      <text class="header-subtitle">查看路线偏离和违规信息</text>
+    </view>
+  </view>
+
+  <view class="content-area">
+    <!-- 路线偏离警告卡片 -->
+    <view class="warning-card" wx:if="{{routeInfo.isDeviated}}">
+      <view class="warning-header">
+        <view class="warning-icon">⚠️</view>
+        <view class="warning-info">
+          <text class="warning-title">路线偏离警告</text>
+          <text class="warning-distance">偏离 {{routeInfo.deviationDistance}} km</text>
+        </view>
+      </view>
+      <view class="warning-details">
+        <view class="detail-row">
+          <text class="detail-label">预定路线</text>
+          <text class="detail-value">{{routeInfo.plannedRoute}}</text>
+        </view>
+        <view class="detail-row">
+          <text class="detail-label">实际路线</text>
+          <text class="detail-value highlight">{{routeInfo.actualRoute}}</text>
+        </view>
+        <view class="detail-row">
+          <text class="detail-label">偏离时间</text>
+          <text class="detail-value">{{routeInfo.deviationTime}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 无违规提示 -->
+    <view class="success-card" wx:if="{{!routeInfo.isDeviated && violations.length === 0}}">
+      <view class="success-icon">✓</view>
+      <text class="success-text">您的驾驶记录良好</text>
+      <text class="success-hint">暂无违规记录</text>
+    </view>
+
+    <!-- 地图区域 -->
+    <view class="map-card" wx:if="{{routeInfo.isDeviated}}">
+      <view class="card-header">
+        <text class="card-icon">🗺️</text>
+        <text class="card-title">路线对比</text>
+      </view>
+      <view class="map-container">
+        <map 
+          class="violation-map" 
+          longitude="{{routeInfo.centerLongitude}}" 
+          latitude="{{routeInfo.centerLatitude}}" 
+          scale="13" 
+          markers="{{markers}}" 
+          polyline="{{polyline}}" 
+          show-location 
+        />
+        <view class="map-legend">
+          <view class="legend-item">
+            <view class="legend-line planned"></view>
+            <text>预定路线</text>
+          </view>
+          <view class="legend-item">
+            <view class="legend-line actual"></view>
+            <text>实际路线</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 违规记录列表 -->
+    <view class="section-card" wx:if="{{violations.length > 0}}">
+      <view class="card-header">
+        <text class="card-icon">📋</text>
+        <text class="card-title">违规记录</text>
+        <text class="card-count">{{violations.length}}条</text>
+      </view>
+      <view class="violation-list">
+        <view class="violation-item" wx:for="{{violations}}" wx:key="id">
+          <view class="violation-header">
+            <view class="violation-type {{item.level || 'normal'}}">{{item.type}}</view>
+            <text class="violation-time">{{item.time}}</text>
+          </view>
+          <text class="violation-desc">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,374 @@
+/* 页面容器 */
+.container {
+  background: linear-gradient(180deg, #1890ff 0%, #f5f7fa 30%);
+  min-height: 100vh;
+  padding-top: 0;
+}
+
+.history-scroll {
+  height: 100vh;
+}
+
+.history-list {
+  box-sizing: border-box;
+  padding: 24rpx;
+  width: 100%;
+}
+
+/* 历史卡片 */
+.history-card {
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.08);
+  margin-bottom: 24rpx;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* 卡片头部 */
+.card-header {
+  align-items: center;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-bottom: 1rpx solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  padding: 24rpx 28rpx;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.route-id {
+  color: #666;
+  font-size: 26rpx;
+  font-weight: 500;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.route-date {
+  color: #333;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.route-time {
+  background: #1890ff;
+  border-radius: 8rpx;
+  color: #fff;
+  font-size: 22rpx;
+  padding: 6rpx 12rpx;
+}
+
+/* 路线区域 */
+.route-section {
+  padding: 28rpx;
+}
+
+.route-line {
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.route-point {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+
+.route-point.start {
+  padding-right: 20rpx;
+}
+
+.route-point.end {
+  padding-left: 20rpx;
+}
+
+.point-marker {
+  align-items: center;
+  border-radius: 50%;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 22rpx;
+  font-weight: 600;
+  height: 44rpx;
+  justify-content: center;
+  margin-right: 12rpx;
+  width: 44rpx;
+}
+
+.start-marker {
+  background: linear-gradient(135deg, #52c41a 0%, #73d13d 100%);
+  color: #fff;
+}
+
+.end-marker {
+  background: linear-gradient(135deg, #f5222d 0%, #ff4d4f 100%);
+  color: #fff;
+}
+
+.point-text {
+  color: #333;
+  font-size: 28rpx;
+  font-weight: 500;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.route-arrow {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  position: relative;
+  width: 80rpx;
+}
+
+.arrow-line {
+  background: linear-gradient(90deg, #52c41a, #1890ff, #f5222d);
+  height: 4rpx;
+  width: 60rpx;
+}
+
+.arrow-head {
+  border-bottom: 8rpx solid transparent;
+  border-left: 12rpx solid #f5222d;
+  border-top: 8rpx solid transparent;
+  height: 0;
+  position: absolute;
+  right: 6rpx;
+  width: 0;
+}
+
+/* 信息标签 */
+.info-tags {
+  background: #f8f9fa;
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 28rpx;
+}
+
+.info-tag {
+  align-items: center;
+  background: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+  display: flex;
+  padding: 10rpx 16rpx;
+}
+
+.tag-icon {
+  font-size: 22rpx;
+  margin-right: 6rpx;
+}
+
+.tag-text {
+  color: #666;
+  font-size: 22rpx;
+  white-space: nowrap;
+}
+
+/* 卡片底部 */
+.card-footer {
+  align-items: center;
+  border-top: 1rpx dashed #e8e8e8;
+  display: flex;
+  justify-content: space-between;
+  padding: 24rpx 28rpx;
+}
+
+.driver-section {
+  align-items: center;
+  display: flex;
+}
+
+.driver-avatar-wrap {
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  border-radius: 50%;
+  margin-right: 16rpx;
+  padding: 4rpx;
+}
+
+.driver-avatar {
+  border-radius: 50%;
+  display: block;
+  height: 64rpx;
+  width: 64rpx;
+}
+
+.driver-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.driver-name {
+  color: #333;
+  font-size: 28rpx;
+  font-weight: 500;
+  margin-bottom: 4rpx;
+}
+
+.driver-plate {
+  background: #f0f0f0;
+  border-radius: 6rpx;
+  color: #666;
+  font-size: 22rpx;
+  padding: 4rpx 12rpx;
+}
+
+.status-section {
+  display: flex;
+  align-items: center;
+}
+
+.route-status {
+  border-radius: 24rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  padding: 8rpx 24rpx;
+}
+
+.status-completed {
+  background: linear-gradient(135deg, #f6ffed 0%, #d9f7be 100%);
+  border: 1rpx solid #b7eb8f;
+  color: #52c41a;
+}
+
+.status-cancelled {
+  background: linear-gradient(135deg, #fff1f0 0%, #ffccc7 100%);
+  border: 1rpx solid #ffa39e;
+  color: #f5222d;
+}
+
+/* 操作栏 */
+.action-bar {
+  align-items: center;
+  background: #fafafa;
+  border-top: 1rpx solid #f0f0f0;
+  display: none;
+  justify-content: center;
+  padding: 20rpx;
+}
+
+.action-text {
+  color: #999;
+  font-size: 24rpx;
+}
+
+/* 加载更多 */
+.load-more,
+.no-more {
+  align-items: center;
+  color: #999;
+  display: flex;
+  font-size: 26rpx;
+  justify-content: center;
+  padding: 32rpx 0;
+}
+
+/* 空状态 */
+.empty-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 200rpx;
+  width: 100%;
+}
+
+.empty-image {
+  height: 240rpx;
+  margin-bottom: 32rpx;
+  opacity: 0.6;
+  width: 240rpx;
+}
+
+.empty-text {
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 删除弹窗 */
+.delete-dialog {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.dialog-mask {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.dialog-content {
+  background: #fff;
+  border-radius: 24rpx;
+  box-shadow: 0 16rpx 48rpx rgba(0, 0, 0, 0.15);
+  padding: 48rpx 40rpx;
+  position: relative;
+  width: 580rpx;
+  z-index: 1000;
+}
+
+.dialog-title {
+  color: #333;
+  display: block;
+  font-size: 34rpx;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+.dialog-message {
+  color: #666;
+  display: block;
+  font-size: 28rpx;
+  line-height: 1.6;
+  margin-bottom: 40rpx;
+  text-align: center;
+}
+
+.dialog-buttons {
+  display: flex;
+  gap: 24rpx;
+  justify-content: center;
+}
+
+.dialog-button {
+  border-radius: 44rpx;
+  flex: 1;
+  font-size: 28rpx;
+  font-weight: 500;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+.dialog-button.cancel {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.dialog-button.confirm {
+  background: linear-gradient(135deg, #1890ff 0%, #36cfc9 100%);
+  color: #fff;
+}

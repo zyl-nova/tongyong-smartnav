@@ -1,0 +1,101 @@
+<!--pages/home-part/navigation/navigation.wxml-->
+<view class="container">
+  <!-- 顶部统计栏 -->
+  <view class="stats-header">
+    <view class="stat-item">
+      <text class="stat-value">{{dangerVehicleCount || 0}}</text>
+      <text class="stat-label">危险品车辆</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item warning">
+      <text class="stat-value">{{warningCount || 0}}</text>
+      <text class="stat-label">预警数</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item danger">
+      <text class="stat-value">{{accidentCount || 0}}</text>
+      <text class="stat-label">事故数</text>
+    </view>
+  </view>
+  
+  <!-- Tab切换 -->
+  <view class="tab-container">
+    <view class="tab-bar">
+      <view class="tab-item {{activeTab === 'compare' ? 'active' : ''}}" bindtap="switchTab" data-tab="compare">
+        <text>路线对比</text>
+      </view>
+      <view class="tab-item {{activeTab === 'planned' ? 'active' : ''}}" bindtap="switchTab" data-tab="planned">
+        <text>预定路线</text>
+      </view>
+      <view class="tab-item {{activeTab === 'actual' ? 'active' : ''}}" bindtap="switchTab" data-tab="actual">
+        <text>实际路线</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 地图区域 -->
+  <view class="map-section">
+    <map class="nav-map" 
+         longitude="{{center.longitude}}" 
+         latitude="{{center.latitude}}" 
+         scale="13" 
+         markers="{{markers}}" 
+         polyline="{{polyline}}" />
+    
+    <!-- 地图控制按钮 -->
+    <view class="map-controls">
+      <view class="control-btn" bindtap="centerLocation">
+        <text>📍</text>
+      </view>
+      <view class="control-btn" bindtap="zoomIn">
+        <text>+</text>
+      </view>
+      <view class="control-btn" bindtap="zoomOut">
+        <text>-</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 车辆信息卡片 -->
+  <view class="vehicle-card" wx:if="{{selectedVehicle}}">
+    <view class="vehicle-header">
+      <view class="vehicle-plate-tag">{{selectedVehicle.plateNumber}}</view>
+      <view class="vehicle-status online">在线</view>
+    </view>
+    <view class="vehicle-details">
+      <view class="detail-row">
+        <text class="detail-label">司机</text>
+        <text class="detail-value">{{selectedVehicle.driver}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">货物</text>
+        <text class="detail-value">{{selectedVehicle.cargo}}</text>
+      </view>
+    </view>
+    <view class="analysis-box" wx:if="{{selectedVehicle.deviationAnalysis}}">
+      <text class="analysis-text">{{selectedVehicle.deviationAnalysis}}</text>
+    </view>
+  </view>
+  
+  <!-- 预警信息 -->
+  <view class="alerts-section" wx:if="{{alerts.length > 0}}">
+    <view class="section-header">
+      <view class="section-icon">⚠️</view>
+      <text class="section-title">预警信息</text>
+      <text class="alert-count">{{alerts.length}}</text>
+    </view>
+    <view class="alert-list">
+      <view class="alert-card {{item.level}}" wx:for="{{alerts}}" wx:key="id">
+        <view class="alert-header">
+          <text class="alert-title">{{item.title}}</text>
+          <text class="alert-time">{{item.time}}</text>
+        </view>
+        <text class="alert-content">{{item.content}}</text>
+        <view class="alert-actions">
+          <button class="action-btn confirm" size="mini" bindtap="handleAlert" data-id="{{item.id}}" data-action="confirm">确认</button>
+          <button class="action-btn dismiss" size="mini" bindtap="handleAlert" data-id="{{item.id}}" data-action="false">误报</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

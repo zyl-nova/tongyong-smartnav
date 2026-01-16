@@ -1,0 +1,133 @@
+.cs-page-container {
+  box-sizing: border-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.cs-sroll-area {
+  flex: 1;
+  overflow: hidden;
+}
+.cs-sroll-container {
+  height: 100%;
+}
+.cs-search-container {
+  align-items: center;
+  background-color: #f3f4f5;
+  border-radius: 4px;
+  display: -webkit-flex;
+  display: flex;
+  height: 40px;
+  margin: 12px 32rpx 0;
+}
+.cs-search-icon {
+  height: 16px;
+  margin-left: 8px;
+  margin-right: 6px;
+  width: 16px;
+}
+.cs-search-input {
+  flex: 1;
+}
+.cs-search-input-placeholder {
+  color: #999;
+  font-size: 14px;
+  height: 22px;
+  line-height: 22px;
+}
+.cs-position-contaienr {
+  align-items: center;
+  display: -webkit-flex;
+  display: flex;
+  height: 20px;
+  margin: 17px 32rpx 0;
+}
+.cs-position-icon {
+  height: 20px;
+  width: 20px;
+}
+.cs-position-label {
+  color: #333;
+  font-size: 16px;
+  margin-left: 2px;
+  margin-right: 12px;
+}
+.cs-position-text {
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+}
+.cs-divider-line {
+  background-color: #e5e5e5;
+  height: 1px;
+  margin-top: 17px;
+  transform: scaleY(0.5);
+  transform-origin: 0 0;
+}
+.cs-hotcity-container {
+  margin: 17px 70rpx 0 32rpx;
+}
+.cs-city-list-container {
+  margin: 16px 70rpx 0 32rpx;
+}
+.cs-letter-text {
+  color: #999;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 22px;
+  padding-left: 8rpx;
+}
+.cs-search-result-container {
+  margin: 0 32rpx;
+}
+.cs-error-container {
+  align-items: center;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+.cs-no-network {
+  flex: auto;
+  height: auto;
+}
+.cs-error-icon {
+  height: 103px;
+  margin-top: -24%;
+  width: 103px;
+}
+.cs-error-text {
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  margin-top: 8px;
+  opacity: 0.7;
+  text-align: center;
+}
+.cs-letter-index-container {
+  align-items: center;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  right: 14rpx;
+}
+.cs-letter-index {
+  background-clip: content-box;
+  border-radius: 50%;
+  box-sizing: border-box;
+  color: #626262;
+  font-size: 12px;
+  height: 22px;
+  line-height: 20px;
+  padding: 1px;
+  text-align: center;
+  width: 22px;
+}
+.cs-without-letter {
+  margin-right: 32rpx;
+}

@@ -1,0 +1,89 @@
+<!--pages/home-part/photo/photo.wxml-->
+<view class="container">
+  <!-- 顶部背景 -->
+  <view class="header-bg">
+    <view class="header-content">
+      <text class="header-title">车辆照片</text>
+      <text class="header-subtitle">上传车辆相关照片</text>
+    </view>
+  </view>
+
+  <view class="content-area">
+    <!-- 拍照须知 -->
+    <view class="tips-card">
+      <view class="tips-header">
+        <view class="tips-icon">📸</view>
+        <text class="tips-title">拍照须知</text>
+      </view>
+      <view class="tips-list">
+        <view class="tip-item" wx:for="{{tips}}" wx:key="*this">
+          <view class="tip-index">{{index + 1}}</view>
+          <text class="tip-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 上传区域 -->
+    <view class="upload-card">
+      <view class="upload-header">
+        <view class="upload-icon">🚛</view>
+        <text class="upload-title">上传车辆照片</text>
+      </view>
+      <view class="upload-grid">
+        <view class="upload-item" bindtap="chooseImage" data-type="front">
+          <image wx:if="{{images.front}}" src="{{images.front}}" mode="aspectFill" class="preview-img" />
+          <view wx:else class="upload-placeholder">
+            <view class="placeholder-icon">📷</view>
+            <text class="placeholder-text">车辆正面</text>
+          </view>
+          <view class="upload-tag" wx:if="{{images.front}}">✓</view>
+        </view>
+        <view class="upload-item" bindtap="chooseImage" data-type="side">
+          <image wx:if="{{images.side}}" src="{{images.side}}" mode="aspectFill" class="preview-img" />
+          <view wx:else class="upload-placeholder">
+            <view class="placeholder-icon">📷</view>
+            <text class="placeholder-text">车辆侧面</text>
+          </view>
+          <view class="upload-tag" wx:if="{{images.side}}">✓</view>
+        </view>
+        <view class="upload-item" bindtap="chooseImage" data-type="hazard">
+          <image wx:if="{{images.hazard}}" src="{{images.hazard}}" mode="aspectFill" class="preview-img" />
+          <view wx:else class="upload-placeholder">
+            <view class="placeholder-icon">⚠️</view>
+            <text class="placeholder-text">危险品标识</text>
+          </view>
+          <view class="upload-tag" wx:if="{{images.hazard}}">✓</view>
+        </view>
+        <view class="upload-item" bindtap="chooseImage" data-type="license">
+          <image wx:if="{{images.license}}" src="{{images.license}}" mode="aspectFill" class="preview-img" />
+          <view wx:else class="upload-placeholder">
+            <view class="placeholder-icon">📄</view>
+            <text class="placeholder-text">行驶证</text>
+          </view>
+          <view class="upload-tag" wx:if="{{images.license}}">✓</view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 上传进度 -->
+    <view class="progress-card" wx:if="{{uploadProgress > 0 && uploadProgress < 100}}">
+      <view class="progress-header">
+        <text class="progress-label">上传中</text>
+        <text class="progress-value">{{uploadProgress}}%</text>
+      </view>
+      <view class="progress-bar">
+        <view class="progress-inner" style="width: {{uploadProgress}}%"></view>
+      </view>
+    </view>
+    
+    <!-- 操作按钮 -->
+    <view class="action-buttons">
+      <button class="btn preview-btn" disabled="{{!canPreview}}" bindtap="previewImages">
+        <text>👁️ 预览照片</text>
+      </button>
+      <button class="btn submit-btn" disabled="{{!canSubmit}}" bindtap="submitImages">
+        <text>✓ 提交审核</text>
+      </button>
+    </view>
+  </view>
+</view>
